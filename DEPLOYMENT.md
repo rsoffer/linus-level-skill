@@ -68,8 +68,10 @@ Set that version as the default:
 curl -X POST 'https://api.openai.com/v1/skills/<skill_id>' \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{ "default_version": <version_number> }'
+  -d '{ "default_version": "<version_number>" }'
 ```
+
+`default_version` must be a string. For example, use `"4"` rather than `4`.
 
 See OpenAI's Skills guide for the latest API details:
 
