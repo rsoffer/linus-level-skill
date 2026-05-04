@@ -76,21 +76,13 @@ State the chosen level briefly only when it affects behavior.
 
 ## Decimal Calibration
 
-Treat decimals as a real sliding scale, not labels for buckets. Interpolate between the nearest anchors.
+Treat decimals as real signal, not labels for buckets.
 
-- The integer part sets the base mode.
-- Each `+0.1` adds a little more caution: fewer assumptions, more local-context reading, more verification, cleaner boundaries, stronger security review, and lower tolerance for debt.
-- Around `.0-.2`, stay close to the lower anchor.
-- Around `.3-.6`, blend both neighboring modes.
-- Around `.7-.9`, pre-adopt the next anchor's most important requirements when they materially affect the task.
+- `.0-.2`: mostly the current anchor.
+- `.3-.6`: blended behavior.
+- `.7-.9`: pre-adopt important requirements from the next anchor when relevant.
 
-Examples:
-
-- **Linus 2.2:** still scrappy; lead creatively and move fast, but keep the concept understandable.
-- **Linus 4.8:** prototype speed, but start behaving like product development for contracts, obvious tests, and repo conventions.
-- **Linus 7.5:** established-codebase mode with moderate-low assumptions.
-- **Linus 7.8:** established-codebase mode leaning toward staff-maintainer behavior: ask before complexity, be stricter about DRY/source-of-truth, and verify more deliberately.
-- **Linus 8.9:** staff-maintainer mode leaning mission-critical: stop on more ambiguity and produce a plan for risky work.
+For exact half-step deltas, read `references/standards-core.md`.
 
 ## Question Budget
 
@@ -107,11 +99,34 @@ Ask questions only when the answer changes the work. Do not ask performative set
 
 At Linus 8.5+, stop and ask before changing auth, permissions, billing, PII, secrets, encryption, schema, migrations, analytics contracts, production config, deployment, public APIs, scoring/ranking rules, or business logic.
 
+## Context Discipline
+
+Linus Level should not bloat context. Load references only when they change the work. Prefer the smallest reference set that covers the active level and risk surface.
+
+Strict loading protocol:
+
+1. For simple conceptual discussion, naming, or README copy, use `SKILL.md` alone unless details are needed.
+2. For repository code changes, review, refactors, tests, architecture, docs, release, or workflow work, read `references/standards-core.md` plus exactly one active level band:
+   - `1.0-4.9`: `references/levels-1-4.md`
+   - `5.0-6.9`: `references/levels-5-6.md`
+   - `7.0-8.4`: `references/levels-7-8.md`
+   - `8.5-10`: `references/levels-8_5-10.md`
+3. Read `references/security-ladder.md` only when work touches security-sensitive surfaces, dependencies, external input, logs/telemetry, production config, or when plausible security risk is material.
+4. Read `references/question-patterns.md` when ambiguity matters at Linus `7+`, ambiguity is blocking at any level, or you need to ask a high-signal clarifying question.
+5. Read `references/low-level-playbook.md` only for Linus `1.0-4.9` creative/prototype work.
+6. Read `references/standards-ladder.md` only if you are unsure which reference to load.
+
+Do not load every reference "just in case."
+
 ## Standards
 
 For threshold details, read the references that match the work:
 
-- `references/standards-ladder.md`: engineering practices, DRY, contracts, refactoring, tests, docs, approval gates
+- `references/standards-core.md`: universal rules, half-step deltas, context discipline
+- `references/levels-1-4.md`: vibe, hack, concept, and product prototype standards
+- `references/levels-5-6.md`: product-development standards
+- `references/levels-7-8.md`: established-codebase coworker standards
+- `references/levels-8_5-10.md`: staff/mission-critical standards
 - `references/security-ladder.md`: security thresholds, trust boundaries, secrets, authz/authn, dependencies, supply chain
 - `references/question-patterns.md`: how to ask concise high-signal clarifying questions
 - `references/low-level-playbook.md`: how to be useful, creative, and exploratory at Linus 1-4
@@ -119,6 +134,7 @@ For threshold details, read the references that match the work:
 Use these principles at all levels:
 
 - Improve code health without chasing perfection.
+- Scale edit scope with the dial: lower levels permit broader exploration; higher levels increasingly favor surgical, reviewable changes.
 - Prefer the smallest change that preserves the product invariant.
 - Fix root causes over symptoms.
 - Preserve source-of-truth ownership.

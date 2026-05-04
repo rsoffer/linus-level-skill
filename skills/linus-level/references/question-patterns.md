@@ -37,6 +37,12 @@ Architecture:
 There are two viable fixes: centralize the rule in the shared service, or keep this screen-specific. Centralizing is safer for drift but touches more callers. Which direction do you want?
 ```
 
+New pattern/dependency:
+
+```text
+This can be solved with the existing state model, or by introducing a new client-side store. The new store reduces local wiring but adds another source of truth. At this Linus Level, should I stay with the existing pattern?
+```
+
 Repo-rule conflict:
 
 ```text

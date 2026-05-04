@@ -46,6 +46,10 @@ Calibrate this task with Linus Level before coding.
 | `8.5-9.4` | Staff maintainer | Ask before material decisions; enforce DRY, security, and source-of-truth discipline. |
 | `9.5-10` | Kernel maintainer | Plan first, stop on dangerous ambiguity, verify deliberately. |
 
+## Context-Light By Design
+
+Linus Level is modular on purpose. The main skill stays small, then loads deeper references only when the task calls for them: level-band standards for code work, security standards for sensitive surfaces, question patterns for ambiguity, and the low-level playbook for fast prototypes.
+
 ## Decimal Points Matter
 
 Decimals are not cosmetic. They interpolate between anchors.
@@ -55,7 +59,7 @@ Decimals are not cosmetic. They interpolate between anchors.
 | `2.2` | Still scrappy. Lead creatively, but keep the concept understandable. |
 | `4.8` | Prototype speed, but start behaving like product development for contracts and repo conventions. |
 | `7.5` | Established-codebase mode with moderate-low assumptions. |
-| `7.8` | Leaning staff-maintainer: stricter DRY/source-of-truth review and more deliberate verification. |
+| `7.8` | Leaning staff-maintainer: stricter DRY/source-of-truth review, more deliberate verification, and more skepticism toward new libraries or paradigms. |
 | `8.9` | Staff-maintainer leaning mission-critical: stop on more ambiguity and plan risky work. |
 
 Rule of thumb:
@@ -111,8 +115,11 @@ The plugin teaches Codex which standards become expected or non-negotiable as th
 | No unrelated refactors in targeted fixes | `7.0+` |
 | DRY for business rules, contracts, validation, scoring, permissions, cache keys, and UI state authority | `7.0+`, strict at `8.5+` |
 | Named constants for thresholds, weights, limits, and domain magic numbers | `7.0+` |
+| Ask before introducing new libraries, frameworks, paradigms, state models, or cross-cutting abstractions in an existing codebase | `7.5+` |
 | Surface tradeoffs before choosing between materially different fixes | `8.0+` |
 | Stop before material assumptions, new complexity, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt | `8.5+` |
+| Scale edit scope with Linus Level: lower levels allow broader exploration; higher levels increasingly favor surgical, reviewable edits | Always; stricter as level rises |
+| Treat existing architecture, framework choices, and module boundaries as authoritative unless explicitly revisiting them | `8.5+` |
 | No hidden fallbacks, shims, shadow state, or parallel implementations without approval | `8.5+` |
 | No timing hacks to mask lifecycle or sequencing bugs | `8.5+` |
 | Docs travel with behavior/config/workflow/architecture changes | `8.5+` |
