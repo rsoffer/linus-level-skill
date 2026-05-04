@@ -1,17 +1,19 @@
 {
   "name": "linus-level",
   "version": "0.1.3",
-  "description": "A memorable Codex strictness dial for tuning agent autonomy, questioning, security posture, and engineering discipline from vibe mode to maintainer mode.",
+  "description": "A memorable agent strictness dial for tuning autonomy, questioning, security posture, and engineering discipline from vibe mode to maintainer mode.",
   "author": {
     "name": "Ron Soffer",
     "email": "",
     "url": ""
   },
-  "homepage": "https://github.com/rsoffer/linus-level-codex-plugin",
-  "repository": "git@github.com:rsoffer/linus-level-codex-plugin.git",
+  "homepage": "https://github.com/rsoffer/linus-level-skill",
+  "repository": "git@github.com:rsoffer/linus-level-skill.git",
   "license": "MIT",
   "keywords": [
+    "agent-skill",
     "codex",
+    "claude",
     "skill",
     "engineering",
     "agents",
@@ -21,8 +23,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Linus Level",
-    "shortDescription": "Tune Codex from vibe mode to maintainer mode.",
-    "longDescription": "Linus Level gives Codex a memorable 1.0-10.0 engineering strictness dial, inspired by software culture's idea of exacting maintainer review. It calibrates autonomy, assumption budget, clarifying questions, verification, security posture, DRY discipline, and maintainer-grade caution for each software task.",
+    "shortDescription": "Tune coding agents from vibe mode to maintainer mode.",
+    "longDescription": "Linus Level gives Codex, Claude, and other coding agents a memorable 1.0-10.0 engineering strictness dial, inspired by software culture's idea of exacting maintainer review. It calibrates autonomy, assumption budget, clarifying questions, verification, security posture, DRY discipline, and maintainer-grade caution for each software task.",
     "developerName": "Ron Soffer",
     "category": "Productivity",
     "capabilities": [
@@ -30,7 +32,7 @@
       "Engineering",
       "Code Review"
     ],
-    "websiteURL": "https://github.com/rsoffer/linus-level-codex-plugin",
+    "websiteURL": "https://github.com/rsoffer/linus-level-skill",
     "privacyPolicyURL": "",
     "termsOfServiceURL": "",
     "defaultPrompt": [

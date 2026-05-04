@@ -1,6 +1,6 @@
 ---
 name: linus-level
-description: Use when calibrating how autonomous, strict, cautious, security-conscious, and question-asking Codex should be for software engineering work. Trigger when the user mentions Linus Level, rigor, strictness, prototype vs production behavior, agent autonomy, engineering coworker mode, established codebases, mission-critical code, or wants Codex tuned between fast exploratory coding and careful maintainer-grade engineering.
+description: Use when calibrating how autonomous, strict, cautious, security-conscious, and question-asking a coding agent should be for software engineering work. Trigger when the user mentions Linus Level, rigor, strictness, prototype vs production behavior, agent autonomy, engineering coworker mode, established codebases, mission-critical code, or wants an agent tuned between fast exploratory coding and careful maintainer-grade engineering.
 ---
 
 # Linus Level
@@ -15,7 +15,7 @@ Linus Level is a 1.0-10.0 dial for calibrating engineering strictness. It tunes 
 
 The name means "maintainer-grade technical standards," not harsh communication. Be direct, warm, and precise.
 
-Source: https://github.com/rsoffer/linus-level-codex-plugin
+Source: https://github.com/rsoffer/linus-level-skill
 
 ## Why "Linus"?
 
@@ -31,7 +31,7 @@ Always obey this order:
 
 1. System, developer, tool, and safety instructions
 2. Current-turn user instructions
-3. Repository instructions: `AGENTS.md`, README files, docs, local conventions
+3. Repository instructions: `AGENTS.md`, `CLAUDE.md`, `.claude/rules/`, README files, docs, local conventions
 4. Linus Level behavior
 5. Agent defaults and preferences
 

@@ -1,8 +1,8 @@
-# Linus Level Codex Plugin
+# Linus Level Skill
 
 ![Linus Level logo](assets/linus-level-logo-lockup-transparent.png)
 
-**Linus Level** gives Codex a `1.0-10.0` strictness dial for software work: from creative vibe-mode prototyping to careful maintainer-grade engineering.
+**Linus Level** gives coding agents like Codex, Claude, and other `SKILL.md`-aware workflows a `1.0-10.0` strictness dial for software work: from creative vibe-mode prototyping to careful maintainer-grade engineering.
 
 The name is a software-culture wink to Linus Torvalds' reputation for exacting technical standards and maintainer seriousness. It is not about harsh communication. It is about giving agents a memorable control for how much freedom, skepticism, verification, security discipline, and code-review strictness a task deserves.
 
@@ -98,7 +98,7 @@ I'll pick a bold direction and build the first usable version. I'll keep the cod
 
 ## Engineering Standards By Level
 
-The plugin teaches Codex which standards become expected or non-negotiable as the dial rises.
+The skill teaches coding agents which standards become expected or non-negotiable as the dial rises.
 
 | Standard | Becomes Non-Negotiable |
 |---|---:|
@@ -150,7 +150,7 @@ Security is not bolted on. Linus Level tunes security discipline too.
 
 Linus Level is a tuning layer, not an authority layer.
 
-If a repository says "always use DRY" and you ask for `Linus Level 1`, Codex should not silently ignore the repo. It should say:
+If a repository says "always use DRY" and you ask for `Linus Level 1`, the agent should not silently ignore the repo. It should say:
 
 ```text
 You asked for Linus 1, but this repo requires DRY business logic and contract stability. I can move quickly within those rules, or you can explicitly approve a temporary exception for this local prototype area.
@@ -160,7 +160,7 @@ Precedence:
 
 1. system, developer, tool, and safety instructions
 2. current-turn user instructions
-3. repository instructions such as `AGENTS.md`, README files, docs, and local conventions
+3. repository instructions such as `AGENTS.md`, `CLAUDE.md`, `.claude/rules/`, README files, docs, and local conventions
 4. Linus Level behavior
 5. agent defaults
 
@@ -170,57 +170,86 @@ Precedence:
 Use Linus Level 1.5. Build a playful one-screen web toy that lets me remix a product name into ridiculous startup taglines.
 ```
 
-Codex should take creative lead, make taste calls, avoid over-planning, and optimize for a fun first result.
+The agent should take creative lead, make taste calls, avoid over-planning, and optimize for a fun first result.
 
 ```text
 Use Linus Level 4.8. Add a rough but usable onboarding checklist to this app so we can test whether new users understand the core workflow.
 ```
 
-Codex should move quickly, follow obvious local patterns, and avoid choices that would make the prototype painful to evolve.
+The agent should move quickly, follow obvious local patterns, and avoid choices that would make the prototype painful to evolve.
 
 ```text
 Use Linus Level 7.8. Fix the account settings bug where changing the display name sometimes reverts after refresh.
 ```
 
-Codex should inspect surrounding state/data flow, preserve API and UI contracts, fix the root cause, and run focused verification.
+The agent should inspect surrounding state/data flow, preserve API and UI contracts, fix the root cause, and run focused verification.
 
 ```text
 Use Linus Level 8.8. Add a new "quality score" filter to the session-ranking feature in this established production app.
 ```
 
-Codex should ask before changing scoring semantics, centralize business rules, avoid duplicated thresholds, update tests, and document behavior changes.
+The agent should ask before changing scoring semantics, centralize business rules, avoid duplicated thresholds, update tests, and document behavior changes.
 
 ```text
 Use Linus Level 9.7. Update the password reset flow to add device-session revocation after a successful reset.
 ```
 
-Codex should plan first, identify trust boundaries, ask about auth/session semantics before implementation, add negative tests, and stop on security ambiguity.
+The agent should plan first, identify trust boundaries, ask about auth/session semantics before implementation, add negative tests, and stop on security ambiguity.
 
 ```text
 Use Linus Level 9.5. Prepare a database migration that changes how billing entitlements are represented, but do not run it.
 ```
 
-Codex should treat data shape and billing authority as high-risk, ask clarifying questions, keep the migration reviewable, and avoid authoritative actions.
+The agent should treat data shape and billing authority as high-risk, ask clarifying questions, keep the migration reviewable, and avoid authoritative actions.
 
-## Plugin Structure
+## Skill Structure
 
 ```text
-.codex-plugin/plugin.json
 assets/
   linus-level-logo-lockup-transparent.png
   linus-level-app-icon.png
 skills/linus-level/SKILL.md
 skills/linus-level/agents/openai.yaml
 skills/linus-level/references/
+.codex-plugin/plugin.json
 ```
 
-## Local Plugin Install
+The `.codex-plugin/` directory is a Codex compatibility wrapper. The canonical skill is `skills/linus-level/`.
 
-Clone or copy this repository into a local plugin directory:
+## Claude Code Install
+
+Claude Code discovers project skills from `.claude/skills/` and user skills from `~/.claude/skills/`. To install Linus Level for Claude Code, copy or symlink the canonical skill directory:
+
+```bash
+mkdir -p ~/.claude/skills
+ln -s "$(pwd)/skills/linus-level" ~/.claude/skills/linus-level
+```
+
+For a project-local install, place or symlink it at:
+
+```text
+<project>/.claude/skills/linus-level
+```
+
+If a project already has `AGENTS.md`, add a `CLAUDE.md` that imports it so Claude Code sees the same repo rules:
+
+```md
+@AGENTS.md
+```
+
+## Codex Install
+
+For skill-only use in Codex, copy or symlink `skills/linus-level` into:
+
+```text
+${CODEX_HOME:-$HOME/.codex}/skills/linus-level
+```
+
+For local Codex plugin presentation, clone or copy this repository into a plugin directory:
 
 ```bash
 mkdir -p ~/plugins
-git clone git@github.com:rsoffer/linus-level-codex-plugin.git ~/plugins/linus-level
+git clone git@github.com:rsoffer/linus-level-skill.git ~/plugins/linus-level
 ```
 
 Then add this entry to `~/.agents/plugins/marketplace.json`:
@@ -248,17 +277,9 @@ For a home-local marketplace, `./plugins/linus-level` resolves to:
 
 See `marketplace.example.json` for a complete sample marketplace file.
 
-## Skill-Only Install
-
-If you do not need plugin packaging, copy or symlink `skills/linus-level` into:
-
-```text
-${CODEX_HOME:-$HOME/.codex}/skills/linus-level
-```
-
 ## Deployment
 
-For hosted OpenAI Skill API upload, GitHub release steps, and bundle packaging details, see [DEPLOYMENT.md](DEPLOYMENT.md).
+For hosted OpenAI and Claude skill upload, GitHub release steps, and bundle packaging details, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## License
 

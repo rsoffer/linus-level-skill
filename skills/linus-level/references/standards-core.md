@@ -4,7 +4,7 @@ Use this reference for universal Linus Level rules, decimal behavior, and contex
 
 ## Always
 
-- Follow repo instructions, README files, docs, and local conventions.
+- Follow repo instructions, including `AGENTS.md`, `CLAUDE.md`, `.claude/rules/`, README files, docs, and local conventions.
 - Ask before bypassing repo standards.
 - Never edit vendored dependency code without explicit approval.
 - Never run authoritative actions such as commit, push, deploy, publish, release, production/staging changes, schema-changing migrations, or external persistent-state changes unless the user explicitly asks in the current turn.
