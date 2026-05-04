@@ -101,22 +101,36 @@ At Linus 8.5+, stop and ask before changing auth, permissions, billing, PII, sec
 
 ## Context Discipline
 
-Linus Level should not bloat context. Load references only when they change the work. Prefer the smallest reference set that covers the active level and risk surface.
+Linus Level should not bloat context, but the standards ladder is cumulative. Higher levels inherit the lower rungs, so repository work must load the level-band standards up through the active level instead of only the top band.
 
 Strict loading protocol:
 
 1. For simple conceptual discussion, naming, or README copy, use `SKILL.md` alone unless details are needed.
-2. For repository code changes, review, refactors, tests, architecture, docs, release, or workflow work, read `references/standards-core.md` plus exactly one active level band:
+2. For repository code changes, review, refactors, tests, architecture, docs, release, or workflow work, read `references/standards-core.md` plus every level band at or below the active level:
    - `1.0-4.9`: `references/levels-1-4.md`
-   - `5.0-6.9`: `references/levels-5-6.md`
-   - `7.0-8.4`: `references/levels-7-8.md`
-   - `8.5-10`: `references/levels-8_5-10.md`
+   - `5.0-6.9`: `references/levels-1-4.md`, `references/levels-5-6.md`
+   - `7.0-8.4`: `references/levels-1-4.md`, `references/levels-5-6.md`, `references/levels-7-8.md`
+   - `8.5-10`: `references/levels-1-4.md`, `references/levels-5-6.md`, `references/levels-7-8.md`, `references/levels-8_5-10.md`
 3. Read `references/security-ladder.md` only when work touches security-sensitive surfaces, dependencies, external input, logs/telemetry, production config, or when plausible security risk is material.
 4. Read `references/question-patterns.md` when ambiguity matters at Linus `7+`, ambiguity is blocking at any level, or you need to ask a high-signal clarifying question.
 5. Read `references/low-level-playbook.md` only for Linus `1.0-4.9` creative/prototype work.
 6. Read `references/standards-ladder.md` only if you are unsure which reference to load.
 
-Do not load every reference "just in case."
+Do not load optional references "just in case." The cumulative level-band standards are not optional for repository work.
+
+## User-Facing Posture
+
+Reference loading is internal discipline, not normal user-facing output.
+
+When a normal user asks to use Linus Level, do not list the files, rungs, or protocol you loaded unless they ask, they are debugging the skill, or they are acting as the skill developer. Instead, briefly state how the level changes your role and working style.
+
+Example for Linus 8.5:
+
+```text
+Got it. I will work in careful maintainer mode: keep changes scoped, preserve contracts, ask before material assumptions, and verify behavior instead of papering over risk.
+```
+
+For developer/debugging conversations about the skill itself, it is appropriate to mention which references were used and why.
 
 ## Standards
 
@@ -146,3 +160,5 @@ Use these principles at all levels:
 At Linus 7+, final responses should include what changed, files touched, verification run, and residual risks when relevant.
 
 At Linus 8.5+, explicitly call out any deferred item, unverified assumption, skipped test, accepted debt, compatibility choice, or partial implementation.
+
+Do not include mundane implementation details about Linus Level's internal reference-loading mechanics in normal delivery. Translate the level into the user's lived experience: how you will decide, when you will ask, how careful you will be, and how you will verify.

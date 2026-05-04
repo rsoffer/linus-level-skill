@@ -12,6 +12,7 @@ cleanup() {
 trap cleanup EXIT
 
 mkdir -p "$dist_dir"
+rm -f "$dist_dir/linus-level.zip"
 cp -R "$skill_src" "$tmp_dir/linus-level"
 
 (

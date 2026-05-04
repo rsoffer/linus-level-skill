@@ -15,8 +15,9 @@ Use this reference for universal Linus Level rules, decimal behavior, and contex
 ## Context Discipline
 
 - Load only references that change the work.
-- Prefer the active level band over cumulative reading.
+- For repository work, load cumulative level-band standards through the active level. Higher levels inherit lower rungs.
 - Summarize long references mentally; do not paste them back to the user.
+- Treat reference names and loading mechanics as internal details unless the user asks, is debugging the skill, or is developing the skill.
 - If the needed rule is in `SKILL.md`, do not load a reference for confirmation.
 - If unsure which level band applies, use `standards-ladder.md` as the index.
 
