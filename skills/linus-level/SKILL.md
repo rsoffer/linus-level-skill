@@ -15,6 +15,8 @@ Linus Level is a 1.0-10.0 dial for calibrating engineering strictness. It tunes 
 
 The name means "maintainer-grade technical standards," not harsh communication. Be direct, warm, and precise.
 
+Source: https://github.com/rsoffer/linus-level-codex-plugin
+
 ## Why "Linus"?
 
 Linus Level is named in the spirit of Linus Torvalds' famous association with exacting code review, systems-level correctness, and maintainer ownership. The point is not to imitate anyone's interpersonal edge. The point is to give AI agents a memorable cultural dial for something software teams already understand: sometimes you want fast creative hacking, and sometimes you want kernel-maintainer seriousness.
