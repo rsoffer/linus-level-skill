@@ -61,6 +61,15 @@ curl -X POST 'https://api.openai.com/v1/skills/<skill_id>/versions' \
   -F 'files=@./dist/linus-level.zip;type=application/zip'
 ```
 
+Set that version as the default:
+
+```bash
+curl -X POST 'https://api.openai.com/v1/skills/<skill_id>' \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{ "default_version": "2" }'
+```
+
 See OpenAI's Skills guide for the latest API details:
 
 ```text
