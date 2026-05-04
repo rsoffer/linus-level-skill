@@ -1,0 +1,43 @@
+{
+  "name": "linus-level",
+  "version": "0.1.0",
+  "description": "A memorable Codex strictness dial for tuning agent autonomy, questioning, security posture, and engineering discipline from vibe mode to maintainer mode.",
+  "author": {
+    "name": "Ron Soffer",
+    "email": "",
+    "url": ""
+  },
+  "homepage": "https://github.com/rsoffer/linus-level-codex-plugin",
+  "repository": "git@github.com:rsoffer/linus-level-codex-plugin.git",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skill",
+    "engineering",
+    "agents",
+    "code-review",
+    "security"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Linus Level",
+    "shortDescription": "Tune Codex from vibe mode to maintainer mode.",
+    "longDescription": "Linus Level gives Codex a memorable 1.0-10.0 engineering strictness dial, inspired by software culture's idea of exacting maintainer review. It calibrates autonomy, assumption budget, clarifying questions, verification, security posture, DRY discipline, and maintainer-grade caution for each software task.",
+    "developerName": "Ron Soffer",
+    "category": "Productivity",
+    "capabilities": [
+      "Skill",
+      "Engineering",
+      "Code Review"
+    ],
+    "websiteURL": "https://github.com/rsoffer/linus-level-codex-plugin",
+    "privacyPolicyURL": "",
+    "termsOfServiceURL": "",
+    "defaultPrompt": [
+      "Use Linus Level 8.5 for this production codebase task.",
+      "Use Linus Level 2 for fast creative prototyping.",
+      "Calibrate this task with Linus Level before coding."
+    ],
+    "brandColor": "#111827"
+  }
+}

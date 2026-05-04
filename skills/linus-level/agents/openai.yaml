@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linus Level"
+  short_description: "Tune agent strictness for real engineering work"
+  default_prompt: "Use $linus-level at Linus Level 8.5 for this production codebase task."
