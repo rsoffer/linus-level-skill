@@ -6,8 +6,6 @@
 
 The name is a software-culture wink to Linus Torvalds' reputation for exacting technical standards and maintainer seriousness. It is not about harsh communication. It is about giving agents a memorable control for how much freedom, skepticism, verification, security discipline, and code-review strictness a task deserves.
 
-The mascot is an original Linux-inspired penguin with a red visor and a `1-10` strictness gauge, not a likeness of a real person.
-
 ## The Problem
 
 AI coding agents are asked to behave in wildly different contexts:
@@ -68,7 +66,7 @@ Rule of thumb:
 
 ## Question Behavior
 
-Higher Linus Level means fewer hidden assumptions.
+Higher Linus Level means fewer hidden assumptions. Serious clarifying questions start at `7.0+`; `9.5+` is not when ambiguity starts mattering, it is when high-risk ambiguity becomes a hard stop.
 
 | Linus Level | Question Policy |
 |---:|---|
@@ -77,9 +75,10 @@ Higher Linus Level means fewer hidden assumptions.
 | `3.0-3.9` | Ask if ambiguity changes the concept, audience, or core interaction. |
 | `4.0-4.9` | Ask if ambiguity could make the prototype hard to evolve. |
 | `5.0-6.9` | Ask when ambiguity affects user-visible behavior, data shape, architecture, or verification. |
-| `7.0-8.4` | Ask before contracts, business rules, shared state, persistence, auth, payments, analytics, or workflows. |
-| `8.5-9.4` | Ask before material assumptions, migrations, dependencies, fallbacks, feature flags, or accepted debt. |
-| `9.5-10` | Do not proceed through ambiguity that affects correctness, security, data, contracts, operations, or business meaning. |
+| `7.0-7.9` | Ask serious questions before changing contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or long-term structure. |
+| `8.0-8.4` | Ask earlier and more precisely; if two plausible fixes have different long-term tradeoffs, surface them before choosing. |
+| `8.5-9.4` | Stop before material assumptions, migrations, dependencies, fallbacks, feature flags, compatibility paths, or accepted debt. |
+| `9.5-10` | Plan first; do not proceed through ambiguity that affects correctness, security, data, contracts, operations, or business meaning. |
 
 Good high-Linus question:
 
@@ -107,15 +106,18 @@ The plugin teaches Codex which standards become expected or non-negotiable as th
 | Do not silently hide failures | `5.0+` |
 | Preserve public API/UI contracts unless explicitly migrating | `6.0+` |
 | Tests for behavior changes | `6.5+` expected, stricter near `7.0+` |
+| Ask serious clarifying questions when ambiguity affects product behavior, contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or architecture | `7.0+` |
 | Root-cause fixes over symptom patches | `7.0+` |
 | No unrelated refactors in targeted fixes | `7.0+` |
 | DRY for business rules, contracts, validation, scoring, permissions, cache keys, and UI state authority | `7.0+`, strict at `8.5+` |
 | Named constants for thresholds, weights, limits, and domain magic numbers | `7.0+` |
+| Surface tradeoffs before choosing between materially different fixes | `8.0+` |
+| Stop before material assumptions, new complexity, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt | `8.5+` |
 | No hidden fallbacks, shims, shadow state, or parallel implementations without approval | `8.5+` |
 | No timing hacks to mask lifecycle or sequencing bugs | `8.5+` |
 | Docs travel with behavior/config/workflow/architecture changes | `8.5+` |
 | Plan before implementation | `9.5+` |
-| Stop on ambiguity affecting correctness, security, data, operations, contracts, or business meaning | `9.5+` |
+| Hard stop on unresolved ambiguity affecting correctness, security, data, operations, contracts, or business meaning | `9.5+` |
 
 ## Security Posture By Level
 
@@ -158,24 +160,40 @@ Precedence:
 ## Example Prompts
 
 ```text
-Use Linus Level 1.5. Take the lead and explore a fun direction. Keep it local and easy to throw away.
+Use Linus Level 1.5. Build a playful one-screen web toy that lets me remix a product name into ridiculous startup taglines.
 ```
 
-```text
-Use Linus Level 4.8. Move fast, but keep the prototype close enough to production shape that we can continue from it.
-```
+Codex should take creative lead, make taste calls, avoid over-planning, and optimize for a fun first result.
 
 ```text
-Use Linus Level 7.8. Read the surrounding code, preserve contracts, avoid duplicated business logic, and verify behavior changes.
+Use Linus Level 4.8. Add a rough but usable onboarding checklist to this app so we can test whether new users understand the core workflow.
 ```
 
-```text
-Use Linus Level 8.8. Ask before changing architecture, business rules, security posture, or public contracts.
-```
+Codex should move quickly, follow obvious local patterns, and avoid choices that would make the prototype painful to evolve.
 
 ```text
-Use Linus Level 9.7. Plan first, threat-model any security-sensitive work, and stop on ambiguity.
+Use Linus Level 7.8. Fix the account settings bug where changing the display name sometimes reverts after refresh.
 ```
+
+Codex should inspect surrounding state/data flow, preserve API and UI contracts, fix the root cause, and run focused verification.
+
+```text
+Use Linus Level 8.8. Add a new "quality score" filter to the session-ranking feature in this established production app.
+```
+
+Codex should ask before changing scoring semantics, centralize business rules, avoid duplicated thresholds, update tests, and document behavior changes.
+
+```text
+Use Linus Level 9.7. Update the password reset flow to add device-session revocation after a successful reset.
+```
+
+Codex should plan first, identify trust boundaries, ask about auth/session semantics before implementation, add negative tests, and stop on security ambiguity.
+
+```text
+Use Linus Level 9.5. Prepare a database migration that changes how billing entitlements are represented, but do not run it.
+```
+
+Codex should treat data shape and billing authority as high-risk, ask clarifying questions, keep the migration reviewable, and avoid authoritative actions.
 
 ## Plugin Structure
 
@@ -231,77 +249,9 @@ If you do not need plugin packaging, copy or symlink `skills/linus-level` into:
 ${CODEX_HOME:-$HOME/.codex}/skills/linus-level
 ```
 
-## Hosted OpenAI Skill Upload
+## Deployment
 
-OpenAI's Skills API uploads the skill bundle itself, not the whole Codex plugin wrapper. For this repo, the upload target is:
-
-```text
-skills/linus-level/
-```
-
-That folder contains the required `SKILL.md` frontmatter plus the reference files. The plugin wrapper (`.codex-plugin/plugin.json`, `assets/`, and `marketplace.example.json`) is for Codex plugin distribution and local marketplace presentation.
-
-Build a hosted-skill zip:
-
-```bash
-bash scripts/package-skill.sh
-```
-
-This creates:
-
-```text
-dist/linus-level.zip
-```
-
-The zip contains one top-level folder:
-
-```text
-linus-level/
-  SKILL.md
-  agents/openai.yaml
-  references/
-```
-
-Upload the zip with the OpenAI API:
-
-```bash
-curl -X POST 'https://api.openai.com/v1/skills' \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F 'files=@./dist/linus-level.zip;type=application/zip'
-```
-
-The response includes the hosted `skill_id`. Use that id from a hosted shell environment:
-
-```json
-{
-  "type": "skill_reference",
-  "skill_id": "<skill_id>"
-}
-```
-
-To publish a new hosted version later:
-
-```bash
-curl -X POST 'https://api.openai.com/v1/skills/<skill_id>/versions' \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F 'files=@./dist/linus-level.zip;type=application/zip'
-```
-
-See OpenAI's Skills guide for the latest API details:
-
-```text
-https://developers.openai.com/api/docs/guides/tools-skills
-```
-
-## GitHub Publishing
-
-This repository is also shaped as a Codex plugin: `.codex-plugin/plugin.json` plus a `skills/` directory. To publish a GitHub release:
-
-1. Commit the plugin files.
-2. Push to `git@github.com:rsoffer/linus-level-codex-plugin.git`.
-3. Tag a semantic version, starting from `v0.1.0`.
-4. Attach `dist/linus-level.zip` as the hosted-skill upload artifact if desired.
-5. Share the repository as the local Codex plugin install source.
+For hosted OpenAI Skill API upload, GitHub release steps, and bundle packaging details, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## License
 

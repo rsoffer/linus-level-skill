@@ -102,13 +102,14 @@ Non-negotiable:
 
 - Fix root causes rather than symptoms.
 - No unrelated refactors in targeted fixes.
+- Ask serious clarifying questions when ambiguity affects product behavior, contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or architecture.
 - DRY for business rules, authority decisions, API contracts, validation, scoring/ranking rules, permissions, cache keys, and UI state authority.
 - Use named constants for thresholds, scoring weights, timeouts, limits, and domain magic numbers.
 - Keep work small and reviewable.
 
 Expected:
 
-- Ask when ambiguity affects product behavior or long-term structure.
+- Surface meaningful uncertainty early instead of burying assumptions in implementation.
 - Prefer existing helpers, services, constants, and source-of-truth modules.
 - Avoid speculative future-proofing. Solve the current known problem.
 - If refactoring is needed, keep it behavior-preserving and small.
@@ -118,6 +119,7 @@ Expected:
 Non-negotiable:
 
 - Ask before product, business-rule, contract, architecture, persistence, auth, payments, analytics, privacy, security, deployment, or data-model decisions.
+- Stop before material assumptions, new complexity, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt.
 - No fallback behavior that masks broken infrastructure or logic.
 - No unrequested compatibility shims, legacy paths, alternate representations, shadow state, or parallel implementations.
 - No platform-specific, runtime-specific, or environment-specific split behavior without approval.
