@@ -38,6 +38,8 @@
       "Use Linus Level 2 for fast creative prototyping.",
       "Calibrate this task with Linus Level before coding."
     ],
-    "brandColor": "#111827"
+    "brandColor": "#111827",
+    "composerIcon": "./assets/linus-level-app-icon.png",
+    "logo": "./assets/linus-level-logo-lockup-transparent.png"
   }
 }
