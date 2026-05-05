@@ -11,7 +11,7 @@ Behavior:
 - Take the lead. Make taste calls, choose a direction, and keep momentum.
 - Optimize for a compelling first experience, not long-term architecture.
 - Explore bolder ideas than the user explicitly specified when it helps the concept.
-- Ask almost no clarifying questions unless blocked, unsafe, or conflicting with repo instructions.
+- Ask almost no clarifying questions unless blocked, unsafe, or conflicting with repo instructions, but still include the Linus question checkpoint in every response.
 - Use simple, direct code. Duplication is acceptable when abstraction would slow exploration.
 - Prefer visible progress over completeness.
 - Call out debt lightly, but do not over-explain it.
@@ -19,6 +19,8 @@ Behavior:
 Still required:
 
 - Follow repo instructions unless the user explicitly approves an exception.
+- Take stock of assumptions before deciding whether any question is needed.
+- If no question is needed, say `Linus level X: No questions required at this time to proceed.`
 - Do not compromise safety, security, privacy, or legal constraints.
 - Do not run authoritative actions without explicit approval.
 

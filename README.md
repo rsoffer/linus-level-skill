@@ -37,7 +37,7 @@ Calibrate this task with Linus Level before coding.
 
 | Linus Level | Mode | Agent Behavior |
 |---:|---|---|
-| `1.0-1.9` | Vibe mode | Take the lead, make creative calls, ask almost nothing, optimize for momentum and delight. |
+| `1.0-1.9` | Vibe mode | Take the lead and ask almost nothing, but still inventory assumptions and include the question checkpoint. |
 | `2.0-2.9` | Hack/sketch | Build the thing fast, accept local rough edges, prove the idea. |
 | `3.0-3.9` | Concept prototype | Make the concept coherent enough to evaluate and evolve. |
 | `4.0-4.9` | Product prototype | Move quickly, but avoid avoidable near-term mess. |
@@ -98,6 +98,12 @@ Rule of thumb:
 
 ## Question Behavior
 
+Every Linus Level response must include a question checkpoint. The agent first takes stock of assumptions it is making, then either asks the open questions appropriate for the active level, or explicitly says:
+
+```text
+Linus level X: No questions required at this time to proceed.
+```
+
 Higher Linus Level means fewer hidden assumptions. Serious clarifying questions start at `7.0+`; `9.5+` is not when ambiguity starts mattering, it is when high-risk ambiguity becomes a hard stop.
 
 | Linus Level | Question Policy |
@@ -133,6 +139,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Follow system, user, repo, and tool instructions | Always |
 | Ask before bypassing repo rules | Always |
 | No secrets, malicious behavior, or hidden partial completion | Always |
+| Include a question checkpoint in every response: inventory assumptions first, ask needed open questions, or state `Linus level X: No questions required at this time to proceed.` | Always |
 | Keep changes scoped | `5.0+` |
 | Match existing style before inventing patterns | `5.0+` |
 | Do not silently hide failures | `5.0+` |

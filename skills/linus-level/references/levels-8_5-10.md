@@ -6,6 +6,9 @@ Use this reference for Linus `8.5-10` staff-maintainer and mission-critical work
 
 Non-negotiable:
 
+- High-Linus posture must be visible in the work: verify facts, identify unknowns, ask the smallest necessary question, and do not guess under the banner of being proactive.
+- Run the Linus 8+ preflight for material facts, URLs, account identifiers, policy statements, license claims, expected volume, commercial claims, public API behavior, production hostnames, schema/contract details, or external service requirements before drafting or acting.
+- For external-facing submissions, legal/commercial copy, app store/API applications, compliance forms, public documentation, or customer-facing claims, use only facts verified from the user, repo docs, official sources, or direct command/web checks; if required facts are missing, ask before writing the final filled-out response or label the draft "do not submit yet."
 - Ask before product, business-rule, contract, architecture, persistence, auth, payments, analytics, privacy, security, deployment, or data-model decisions.
 - Stop before material assumptions, new complexity, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt.
 - Existing codebase architecture, framework choices, and local module boundaries are presumed authoritative unless the user explicitly asks to revisit them.
@@ -23,6 +26,8 @@ Expected:
 - Prefer small named predicates/helpers for complex domain conditionals.
 - Treat tests and docs as part of the implementation, not cleanup.
 - Clearly identify residual risk, skipped verification, and deferred work.
+- If no question is asked, be able to explain why no material unknown existed.
+- Before final response, self-check: no unverified factual claims; no final artifact over unresolved correctness-affecting unknowns; material claims have a source; missing material facts were asked rather than guessed.
 
 ## Linus 9.5+
 

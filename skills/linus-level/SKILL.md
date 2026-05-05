@@ -90,6 +90,15 @@ For exact half-step deltas, read `references/standards-core.md`.
 
 Ask questions only when the answer changes the work. Do not ask performative setup questions when local context can answer them.
 
+Every user-facing response under Linus Level must include a question checkpoint. Before deciding whether questions are needed, take stock of assumptions made or about to be made at the active level:
+
+- Identify the assumptions, including implicit assumptions from the user's wording, local context, repo patterns, defaults, inferred intent, and missing facts.
+- Decide which assumptions are safe/reversible and which could change the work at the active Linus Level.
+- Surface material assumptions when they shape the answer, even if no question is required.
+- If any assumption would change the work, list the resulting open question briefly and ask the smallest useful set.
+- If there are no needed questions, include this exact line: `Linus level X: No questions required at this time to proceed.`
+- Replace `X` with the active or inferred Linus Level.
+
 - **1.0-1.9:** Ask only if blocked, unsafe, or repo rules create a conflict. Otherwise take the lead.
 - **2.0-2.9:** Ask only for hard blockers or major product direction forks.
 - **3.0-3.9:** Ask if ambiguity changes the concept, audience, core interaction, or implementation surface.
@@ -100,6 +109,56 @@ Ask questions only when the answer changes the work. Do not ask performative set
 - **9.5-10:** Do not proceed through ambiguity that could affect correctness, security, privacy, data, contracts, operations, or business meaning. Present a brief plan and open questions first.
 
 At Linus 8.5+, stop and ask before changing auth, permissions, billing, PII, secrets, encryption, schema, migrations, analytics contracts, production config, deployment, public APIs, scoring/ranking rules, or business logic.
+
+## High-Linus Operating Protocol
+
+High Linus compliance is behavior, not theater. Merely reading the skill, saying "Linus 8," or saying "careful maintainer mode" is not enough; the work must show fewer assumptions, earlier questions, clearer fact boundaries, and explicit source-of-truth handling.
+
+At Linus 7+, before producing a plan, external-facing copy, architecture decision, data/schema change, API contract change, business-rule change, or production-impacting recommendation, explicitly classify the task in the plan, preflight, or user-facing setup:
+
+- implementation
+- investigation
+- external submission / legal-commercial copy
+- architecture / contract decision
+- operational / deployment / persistent-state action
+- product/business-rule decision
+
+At Linus 8+, when the task involves any material fact, URL, account identifier, policy statement, license claim, expected volume, commercial claim, public API behavior, production hostname, schema/contract detail, or external service requirement, create a short preflight before drafting or acting:
+
+- Verified facts, with source: user-provided fact, local file, command output, official docs, or direct web/API check.
+- Unknown facts that affect correctness.
+- Questions required before proceeding.
+- Safe reversible assumptions, if any.
+
+If an unknown affects correctness, contracts, public claims, legal/commercial wording, operations, security, data, or production behavior, stop and ask a narrow question before completing the artifact. Do not hide the unknown inside a placeholder unless the user explicitly asked for a template.
+
+For external-facing submissions, legal/commercial copy, app store/API applications, compliance forms, public documentation, or customer-facing claims:
+
+- Never invent URLs, domains, account links, legal terms, license permissions, expected request volumes, pricing, organization details, or production status.
+- Use only facts verified from the user, repo docs, official sources, or direct command/web checks.
+- If a required field is unknown, ask before writing the final filled-out response.
+- If useful, provide a clearly labeled "do not submit yet" draft only while required facts are missing.
+
+At Linus 8+, "be proactive" means proactively verify, identify unknowns, and ask the smallest necessary question. A high-signal question is forward progress.
+
+Before the final response at Linus 8+, self-check:
+
+- Did I make any factual claim I did not verify?
+- Did I answer with a final artifact despite unresolved correctness-affecting unknowns?
+- Did I cite local files, command output, official docs, or user-provided facts for material claims?
+- Did I ask for missing material facts instead of guessing?
+
+Failure examples:
+
+- Bad: User asks for a third-party API application description. Agent guesses the homepage URL from product name.
+- Good: Agent checks repo docs for public site and app URLs, then asks for the Flickr account URL before producing final copy.
+- Bad: Agent says "Linus 8" but never asks questions.
+- Good: Agent asks one or two material questions early and explains why the answer changes the work.
+
+Success criteria:
+
+- At Linus 8+, the user should notice fewer assumptions, earlier questions, clearer fact boundaries, and more explicit source-of-truth handling.
+- If no question is asked at Linus 8+, the agent must be able to explain why no material unknown existed.
 
 ## Context Discipline
 
@@ -158,6 +217,8 @@ Use these principles at all levels:
 - Make verification proportional to risk.
 
 ## Delivery
+
+Every final answer under Linus Level must preserve the question checkpoint from Question Budget: take stock of assumptions, then either list active open questions, or include `Linus level X: No questions required at this time to proceed.`
 
 At Linus 7+, final responses should include what changed, files touched, verification run, and residual risks when relevant.
 

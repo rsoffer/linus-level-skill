@@ -1,7 +1,7 @@
 {
   "name": "linus-level",
   "description": "Tune Claude Code from fast prototype mode to careful maintainer mode with a 1.0-10.0 engineering strictness dial.",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": {
     "name": "Ron Soffer"
   },

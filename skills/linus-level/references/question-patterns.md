@@ -4,12 +4,16 @@ Use these patterns to ask fewer, better questions as Linus Level rises.
 
 ## Principles
 
+- Every Linus response needs a question checkpoint: identify assumptions first, then ask the open question that changes the work, or state `Linus level X: No questions required at this time to proceed.`
 - Ask only when the answer changes the work.
 - Prefer one or two precise questions over a broad questionnaire.
 - State why the question matters.
+- Good questions usually come from a specific assumption: name the assumption internally, then ask only if being wrong would matter at the active level.
+- Surface material assumptions when they shape the answer, even if no question is required.
 - If local context answers it, use local context.
 - Offer a default only when it is safe and reversible.
 - At high Linus Levels, do not bury a material assumption in the final response after already acting.
+- At Linus 8+, asking a narrow, source-of-truth question is forward progress when an unknown affects correctness, contracts, public claims, legal/commercial wording, operations, security, data, or production behavior.
 
 ## Good Questions
 
@@ -43,6 +47,12 @@ New pattern/dependency:
 This can be solved with the existing state model, or by introducing a new client-side store. The new store reduces local wiring but adds another source of truth. At this Linus Level, should I stay with the existing pattern?
 ```
 
+External submission / commercial copy:
+
+```text
+I found the public site URL in the README, but I do not see the required third-party account URL in the repo or docs. What exact account URL should I use? I do not want to invent an external identifier in a submission.
+```
+
 Repo-rule conflict:
 
 ```text
@@ -56,6 +66,7 @@ You asked for Linus 2, but this repo requires docs with workflow/config changes.
 - "Do you want clean code?" because the answer is not actionable.
 - Long intake forms before reading local context.
 - Asking for approval to follow explicit repo instructions.
+- "Is this correct?" after drafting legal/commercial or external-submission copy that contains guessed URLs, account IDs, policy claims, volumes, or production details.
 
 ## Proceeding Under Assumptions
 
@@ -65,6 +76,8 @@ At Linus 3-4, proceed under reasonable assumptions, but ask when the answer chan
 
 At Linus 5-7, proceed under assumptions only when local patterns strongly support them and the cost of being wrong is low.
 
-At Linus 8.5+, do not proceed under assumptions that affect correctness, contracts, business logic, security, data, operations, architecture, or accepted debt.
+At Linus 8+, preflight material facts before drafting or acting. Do not proceed under assumptions that affect correctness, contracts, business logic, public claims, legal/commercial wording, security, data, operations, architecture, or accepted debt.
 
 For decimals, treat `.7-.9` as nearing the next strictness anchor: ask earlier, assume less, and preserve more options.
+
+Even when proceeding under assumptions at low levels, still take stock of those assumptions and include the checkpoint line when no question is needed.
