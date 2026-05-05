@@ -4,7 +4,7 @@
     "name": "Ron Soffer"
   },
   "description": "Claude Code plugins for calibrated engineering strictness and maintainer-grade coding workflows.",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "plugins": [
     {
       "name": "linus-level",

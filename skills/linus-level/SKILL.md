@@ -1,6 +1,8 @@
 ---
 name: linus-level
-description: Use when calibrating how autonomous, strict, cautious, security-conscious, and question-asking a coding agent should be for software engineering work. Trigger when the user mentions Linus Level, rigor, strictness, prototype vs production behavior, agent autonomy, engineering coworker mode, established codebases, mission-critical code, or wants an agent tuned between fast exploratory coding and careful maintainer-grade engineering.
+description: Set engineering strictness on a 1.0-10.0 dial - tunes autonomy, assumption budget, questioning, verification, and security posture from fast prototype to maintainer-grade. Use when the user mentions "Linus Level", "LL <n>", asks to set rigor/strictness/maintainer mode, calibrate agent autonomy or coworker mode, or distinguishes prototype vs production / established-codebase / mission-critical work.
+argument-hint: <level 1.0-10.0>
+allowed-tools: [Read, Glob, Grep, Bash]
 ---
 
 # Linus Level
