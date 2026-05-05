@@ -33,6 +33,19 @@ Use Linus Level 2 for fast creative prototyping.
 Calibrate this task with Linus Level before coding.
 ```
 
+## The Dial
+
+| Linus Level | Mode | Agent Behavior |
+|---:|---|---|
+| `1.0-1.9` | Vibe mode | Take the lead, make creative calls, ask almost nothing, optimize for momentum and delight. |
+| `2.0-2.9` | Hack/sketch | Build the thing fast, accept local rough edges, prove the idea. |
+| `3.0-3.9` | Concept prototype | Make the concept coherent enough to evaluate and evolve. |
+| `4.0-4.9` | Product prototype | Move quickly, but avoid avoidable near-term mess. |
+| `5.0-6.9` | Product development | Use professional defaults, follow local patterns, test behavior changes. |
+| `7.0-8.4` | Established codebase | Preserve contracts, fix root causes, keep changes scoped and reviewable. |
+| `8.5-9.4` | Staff maintainer | Ask before material decisions; enforce DRY, security, and source-of-truth discipline. |
+| `9.5-10` | Kernel maintainer | Plan first, stop on dangerous ambiguity, verify deliberately. |
+
 ## Copy/Paste Install Prompts
 
 Paste one of these into your coding agent to have it install Linus Level from this repository:
@@ -60,19 +73,6 @@ Install the Linus Level agent skill from https://github.com/rsoffer/linus-level-
 
 This repository uses the Agent Skills `SKILL.md` format. Please install the canonical skill folder at `skills/linus-level` into this agent's user or project skills directory, preserving `SKILL.md` plus its `references/`, `agents/`, and `assets/` subdirectories. After installation, verify that the skill named `linus-level` is available and can be invoked for prompts like "Use Linus Level 8.5".
 ```
-
-## The Dial
-
-| Linus Level | Mode | Agent Behavior |
-|---:|---|---|
-| `1.0-1.9` | Vibe mode | Take the lead, make creative calls, ask almost nothing, optimize for momentum and delight. |
-| `2.0-2.9` | Hack/sketch | Build the thing fast, accept local rough edges, prove the idea. |
-| `3.0-3.9` | Concept prototype | Make the concept coherent enough to evaluate and evolve. |
-| `4.0-4.9` | Product prototype | Move quickly, but avoid avoidable near-term mess. |
-| `5.0-6.9` | Product development | Use professional defaults, follow local patterns, test behavior changes. |
-| `7.0-8.4` | Established codebase | Preserve contracts, fix root causes, keep changes scoped and reviewable. |
-| `8.5-9.4` | Staff maintainer | Ask before material decisions; enforce DRY, security, and source-of-truth discipline. |
-| `9.5-10` | Kernel maintainer | Plan first, stop on dangerous ambiguity, verify deliberately. |
 
 ## Context-Light By Design
 
