@@ -33,6 +33,34 @@ Use Linus Level 2 for fast creative prototyping.
 Calibrate this task with Linus Level before coding.
 ```
 
+## Copy/Paste Install Prompts
+
+Paste one of these into your coding agent to have it install Linus Level from this repository:
+
+### Codex
+
+```text
+Install the Linus Level skill from https://github.com/rsoffer/linus-level-skill.
+
+Please clone or fetch the repository, install the canonical skill directory `skills/linus-level` into my Codex skills directory at `${CODEX_HOME:-$HOME/.codex}/skills/linus-level`, and verify that the skill is discoverable afterward. Preserve the `SKILL.md`, `references/`, `agents/`, and `assets/` files. Do not expose or modify any secrets.
+```
+
+### Claude Code
+
+```text
+Install the Linus Level Claude Code plugin from https://github.com/rsoffer/linus-level-skill.
+
+Please add the repository as a Claude Code plugin marketplace, install `linus-level@linus-level-skills`, reload plugins if needed, and verify that `/linus-level` or `/linus-level:linus-level` resolves.
+```
+
+### Other Agents
+
+```text
+Install the Linus Level agent skill from https://github.com/rsoffer/linus-level-skill.
+
+This repository uses the Agent Skills `SKILL.md` format. Please install the canonical skill folder at `skills/linus-level` into this agent's user or project skills directory, preserving `SKILL.md` plus its `references/`, `agents/`, and `assets/` subdirectories. After installation, verify that the skill named `linus-level` is available and can be invoked for prompts like "Use Linus Level 8.5".
+```
+
 ## The Dial
 
 | Linus Level | Mode | Agent Behavior |
