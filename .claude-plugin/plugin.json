@@ -1,0 +1,20 @@
+{
+  "name": "linus-level",
+  "description": "Tune Claude Code from fast prototype mode to careful maintainer mode with a 1.0-10.0 engineering strictness dial.",
+  "version": "0.1.5",
+  "author": {
+    "name": "Ron Soffer"
+  },
+  "homepage": "https://github.com/rsoffer/linus-level-skill",
+  "repository": "https://github.com/rsoffer/linus-level-skill",
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "engineering",
+    "code-review",
+    "security",
+    "maintainer-mode",
+    "prototype"
+  ],
+  "skills": "./skills/"
+}

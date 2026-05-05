@@ -1,0 +1,30 @@
+{
+  "name": "linus-level-skills",
+  "owner": {
+    "name": "Ron Soffer"
+  },
+  "description": "Claude Code plugins for calibrated engineering strictness and maintainer-grade coding workflows.",
+  "version": "0.1.5",
+  "plugins": [
+    {
+      "name": "linus-level",
+      "source": "./",
+      "description": "Tune Claude Code from fast prototype mode to careful maintainer mode with a 1.0-10.0 engineering strictness dial.",
+      "author": {
+        "name": "Ron Soffer"
+      },
+      "homepage": "https://github.com/rsoffer/linus-level-skill",
+      "repository": "https://github.com/rsoffer/linus-level-skill",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "engineering",
+        "code-review",
+        "security",
+        "maintainer-mode",
+        "prototype"
+      ],
+      "category": "Productivity"
+    }
+  ]
+}

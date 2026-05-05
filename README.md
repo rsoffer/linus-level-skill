@@ -218,7 +218,29 @@ The `.codex-plugin/` directory is a Codex compatibility wrapper. The canonical s
 
 ## Claude Code Install
 
-Claude Code discovers project skills from `.claude/skills/` and user skills from `~/.claude/skills/`. To install Linus Level for Claude Code, copy or symlink the canonical skill directory:
+Linus Level can be installed in Claude Code as a plugin from this repository's marketplace:
+
+```text
+/plugin marketplace add rsoffer/linus-level-skill
+/plugin install linus-level@linus-level-skills
+/reload-plugins
+```
+
+The plugin exposes the skill as:
+
+```text
+/linus-level:linus-level
+```
+
+For local development, load the repo directly:
+
+```bash
+claude plugin validate .
+claude plugin marketplace add "$(pwd)" --scope local
+claude plugin install linus-level@linus-level-skills --scope local
+```
+
+Claude Code also discovers standalone project skills from `.claude/skills/` and user skills from `~/.claude/skills/`. To install Linus Level as a standalone user skill instead of a plugin, copy or symlink the canonical skill directory:
 
 ```bash
 mkdir -p ~/.claude/skills

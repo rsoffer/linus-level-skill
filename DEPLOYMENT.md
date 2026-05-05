@@ -83,6 +83,73 @@ https://developers.openai.com/api/docs/guides/tools-skills
 
 Claude Skills use the same core shape: a directory containing `SKILL.md`, with optional `references/`, `scripts/`, and `assets/`.
 
+### Claude Code Plugin Marketplace
+
+Claude Code distributes community skills through plugins and plugin marketplaces. This repository is both:
+
+- a Claude Code plugin, via `.claude-plugin/plugin.json`
+- a Claude Code marketplace, via `.claude-plugin/marketplace.json`
+
+Validate the plugin and marketplace:
+
+```bash
+claude plugin validate .claude-plugin/plugin.json
+claude plugin validate .
+```
+
+Test a local install without publishing:
+
+```bash
+claude plugin marketplace add "$(pwd)" --scope local
+claude plugin install linus-level@linus-level-skills --scope local
+```
+
+Then run `/reload-plugins` inside Claude Code.
+
+Users can install from GitHub after the marketplace files are pushed:
+
+```text
+/plugin marketplace add rsoffer/linus-level-skill
+/plugin install linus-level@linus-level-skills
+/reload-plugins
+```
+
+The skill is namespaced by the plugin:
+
+```text
+/linus-level:linus-level
+```
+
+For official Anthropic marketplace submission, use one of the in-app forms:
+
+```text
+https://claude.ai/settings/plugins/submit
+https://platform.claude.com/plugins/submit
+```
+
+Suggested submission fields:
+
+```text
+Name: Linus Level
+Plugin id: linus-level
+Repository: https://github.com/rsoffer/linus-level-skill
+Marketplace install source: rsoffer/linus-level-skill
+Category: Productivity
+License: MIT
+Description: Tune Claude Code from fast prototype mode to careful maintainer mode with a 1.0-10.0 engineering strictness dial.
+```
+
+Before submission, confirm:
+
+- the repository is public
+- `.claude-plugin/plugin.json` validates
+- `.claude-plugin/marketplace.json` validates
+- local marketplace install works
+- the release tag contains the Claude plugin files
+- the plugin version changed since the previous release
+
+### Claude.ai Custom Skill Upload
+
 For Claude Code user install:
 
 ```bash
@@ -133,9 +200,11 @@ https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 https://claude.com/docs/skills/how-to
 https://code.claude.com/docs/en/agent-sdk/skills
 https://code.claude.com/docs/en/memory
+https://code.claude.com/docs/en/plugins
+https://code.claude.com/docs/en/plugin-marketplaces
 ```
 
-Claude's official docs describe custom skill upload and filesystem discovery, not a public marketplace submission flow. For marketplace-style distribution today, publish the GitHub repo and release artifact so users can install the skill into Claude Code, upload the zip to Claude.ai, or submit the same `SKILL.md` package wherever third-party skill directories accept GitHub/zip submissions.
+Claude.ai custom skill upload and Claude Code plugin marketplace distribution are separate flows. The zip upload flow is for custom skills in Claude.ai. The plugin marketplace flow is for discoverable Claude Code distribution.
 
 ## GitHub Publishing
 
