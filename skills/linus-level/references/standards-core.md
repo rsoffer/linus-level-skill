@@ -45,12 +45,12 @@ Apply every half-step at or below the active level. Between half-steps, use the 
 | `3.5` | Use lightweight structure so the prototype can evolve. |
 | `4.0` | Preserve the main product invariant. |
 | `4.5` | Start honoring standards that would block safe continuation: contracts, obvious state authority, and repo conventions. |
-| `5.0` | Keep changes scoped, match local style, and avoid silent failure hiding. |
+| `5.0` | Keep changes scoped, match local style, prefer cohesive modules, and avoid silent failure hiding. |
 | `5.5` | Prefer existing helpers/components before adding new patterns. |
 | `6.0` | Preserve public API/UI contracts unless explicitly migrating. |
 | `6.5` | Treat tests for behavior changes as expected. |
 | `7.0` | Ask serious questions before changing product behavior, contracts, shared state, persistence, auth, payments, analytics, workflows, or architecture. |
-| `7.5` | Ask before introducing new libraries, frameworks, paradigms, or cross-cutting abstractions in an existing codebase. |
+| `7.5` | Ask before introducing new libraries, frameworks, paradigms, or cross-cutting abstractions in an existing codebase; flag large files that may deserve proper refactoring. |
 | `8.0` | Surface tradeoffs before choosing between materially different fixes or touching shared/core surfaces. |
 | `8.5` | Stop before material assumptions, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt; ask before broad rewrites, sweeping refactors, documentation overhauls, or large style changes. |
 | `9.0` | Produce an explicit verification plan for risky behavior, data, security, or operational changes. |

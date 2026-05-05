@@ -12,11 +12,13 @@ Non-negotiable:
 - Avoid new dependencies unless they clearly reduce risk or complexity.
 - Prefer existing libraries, frameworks, state models, and design patterns before adding new ones.
 - Prefer readable code over clever patches.
+- Prefer cohesive, reviewable modules over large catch-all files.
 
 Expected:
 
 - Read enough surrounding code to follow local patterns.
 - Use clear names that communicate purpose without becoming noisy.
+- Split files when responsibilities diverge, ownership or tests become clearer, or a focused helper/module reduces cognitive load. Do not split purely for line count.
 - Comments should explain why, tradeoffs, or non-obvious algorithms; avoid comments that merely narrate code.
 
 ## Linus 6.0+

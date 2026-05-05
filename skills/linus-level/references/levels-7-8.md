@@ -1,6 +1,6 @@
 # Levels 7-8
 
-Use this reference for Linus `7.0-8.4` established-codebase work. These rules assume the `5.0+` and `6.0+` standards: scoped changes, local style, contract preservation, and tests for behavior changes.
+Use this reference for Linus `7.0-8.4` established-codebase work. These rules assume the `5.0+` and `6.0+` standards: scoped changes, local style, cohesive modules, contract preservation, and tests for behavior changes.
 
 ## Linus 7.0+
 
@@ -20,12 +20,17 @@ Expected:
 - Treat codebase pattern fit as a first-class design constraint.
 - Avoid speculative future-proofing. Solve the current known problem.
 - If refactoring is needed, keep it behavior-preserving and small.
+- Do not perform broad file-splitting refactors unless the requested task requires it or the user approves that scope.
 
 ## Linus 7.5+
 
 Non-negotiable:
 
 - Ask before introducing new libraries, frameworks, paradigms, state-management models, API clients, persistence patterns, or broad design abstractions in an established codebase.
+
+Expected:
+
+- Flag large or catch-all files when they create review, testing, ownership, or comprehension risk, and tell the user they may be good candidates for a proper refactor.
 
 ## Linus 8.0+
 

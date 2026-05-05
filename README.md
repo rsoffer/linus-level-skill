@@ -136,6 +136,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Keep changes scoped | `5.0+` |
 | Match existing style before inventing patterns | `5.0+` |
 | Do not silently hide failures | `5.0+` |
+| Prefer cohesive, reviewable modules over large catch-all files | `5.0+` |
 | Preserve public API/UI contracts unless explicitly migrating | `6.0+` |
 | Tests for behavior changes | `6.5+` expected, stricter near `7.0+` |
 | Ask serious clarifying questions when ambiguity affects product behavior, contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or architecture | `7.0+` |
@@ -144,6 +145,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | DRY for business rules, contracts, validation, scoring, permissions, cache keys, and UI state authority | `7.0+`, strict at `8.5+` |
 | Named constants for thresholds, weights, limits, and domain magic numbers | `7.0+` |
 | Ask before introducing new libraries, frameworks, paradigms, state models, or cross-cutting abstractions in an existing codebase | `7.5+` |
+| Flag large files as possible candidates for proper refactors when they create review, testing, ownership, or comprehension risk | `7.5+` |
 | Surface tradeoffs before choosing between materially different fixes | `8.0+` |
 | Stop before material assumptions, new complexity, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt | `8.5+` |
 | Scale edit scope with Linus Level: lower levels allow broader exploration; higher levels increasingly favor surgical, reviewable edits | Always; stricter as level rises |
