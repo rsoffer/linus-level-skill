@@ -93,32 +93,6 @@ After installation, ask me whether I want to add a default Linus Level instructi
 Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
 ```
 
-## 🧭 Default Workspace Setting
-
-Linus Level works best when a project carries its normal default in repo instructions. The main reason is context compaction: long agent sessions eventually get summarized, and that summary can lose the exact Linus Level the model was supposed to keep using. A short line in `AGENTS.md`, `CLAUDE.md`, or the equivalent repo instructions file gives the agent a durable source of truth it can reload after compaction, restarts, or handoffs.
-
-Add this to `AGENTS.md`, `CLAUDE.md`, or the equivalent agent instructions file for the workspace:
-
-```md
-Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
-```
-
-Adjust `7.5` to match the repo. A greenfield prototype might default closer to `4.0`; an established production app usually belongs around `7.5-8.5`.
-
-## 🧩 Marketplace Notes
-
-Linus Level is distributed as a portable `SKILL.md` repository today. It also includes Codex and Claude plugin metadata so it can be installed through compatible marketplace flows.
-
-| Harness | Current path | Notes |
-|---|---|---|
-| Codex | GitHub repo / local skill install | Uses `.codex-plugin/plugin.json` plus `skills/linus-level/`. |
-| Claude Code | Repository marketplace | Uses `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. |
-| OpenAI hosted skills | Zip upload | Package `skills/linus-level/` with `scripts/package-skill.sh`. |
-| Claude custom skills | Zip or project/user skill folder | Same canonical `skills/linus-level/` directory. |
-| Other `SKILL.md` agents | Filesystem install | Preserve `SKILL.md`, `references/`, `agents/`, and `assets/`. |
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for publishing steps and marketplace research.
-
 ## 🪶 Context-Light By Design
 
 Linus Level is modular on purpose. The main skill stays small, then loads deeper references only when the task calls for them: level-band standards for code work, security standards for sensitive surfaces, question patterns for ambiguity, and the low-level playbook for fast prototypes.
@@ -283,6 +257,32 @@ Use Linus Level 9.5. Prepare a database migration that changes how billing entit
 ```
 
 The agent should treat data shape and billing authority as high-risk, ask clarifying questions, keep the migration reviewable, and avoid authoritative actions.
+
+## 🧭 Default Workspace Setting
+
+Linus Level works best when a project carries its normal default in repo instructions. The main reason is context compaction: long agent sessions eventually get summarized, and that summary can lose the exact Linus Level the model was supposed to keep using. A short line in `AGENTS.md`, `CLAUDE.md`, or the equivalent repo instructions file gives the agent a durable source of truth it can reload after compaction, restarts, or handoffs.
+
+Add this to `AGENTS.md`, `CLAUDE.md`, or the equivalent agent instructions file for the workspace:
+
+```md
+Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
+```
+
+Adjust `7.5` to match the repo. A greenfield prototype might default closer to `4.0`; an established production app usually belongs around `7.5-8.5`.
+
+## 🧩 Marketplace Notes
+
+Linus Level is distributed as a portable `SKILL.md` repository today. It also includes Codex and Claude plugin metadata so it can be installed through compatible marketplace flows.
+
+| Harness | Current path | Notes |
+|---|---|---|
+| Codex | GitHub repo / local skill install | Uses `.codex-plugin/plugin.json` plus `skills/linus-level/`. |
+| Claude Code | Repository marketplace | Uses `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. |
+| OpenAI hosted skills | Zip upload | Package `skills/linus-level/` with `scripts/package-skill.sh`. |
+| Claude custom skills | Zip or project/user skill folder | Same canonical `skills/linus-level/` directory. |
+| Other `SKILL.md` agents | Filesystem install | Preserve `SKILL.md`, `references/`, `agents/`, and `assets/`. |
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for publishing steps and marketplace research.
 
 ## Skill Structure
 
