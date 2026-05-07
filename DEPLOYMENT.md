@@ -71,6 +71,15 @@ skills/linus-level/
 
 That folder contains the required `SKILL.md` frontmatter plus the reference files. The `.codex-plugin/` wrapper is only for Codex plugin distribution and local marketplace presentation.
 
+Existing hosted OpenAI skill:
+
+```text
+Name: linus-level
+Skill id: skill_69f8f9253da881908e33a43e466cecbc04529bfc6931fcd8
+```
+
+Use this `skill_id` when publishing new hosted versions. Do not create a duplicate hosted skill unless intentionally changing the public skill identity.
+
 Build a hosted-skill zip:
 
 ```bash
@@ -92,7 +101,7 @@ linus-level/
   references/
 ```
 
-Upload the zip with the OpenAI API:
+For a first-time upload, create the hosted skill with the OpenAI API:
 
 ```bash
 curl -X POST 'https://api.openai.com/v1/skills' \
