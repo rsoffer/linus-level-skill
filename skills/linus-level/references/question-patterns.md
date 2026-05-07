@@ -4,7 +4,7 @@ Use these patterns to ask fewer, better questions as Linus Level rises.
 
 ## Principles
 
-- Every Linus response needs a question checkpoint: identify assumptions first, then ask the open question that changes the work, or state `Linus level X: No questions required at this time to proceed.`
+- Every Linus response needs a checkpoint: identify assumptions first, then state `Linus level X checkpoint: Next action = __. Approval needed = __. Open questions = __.`
 - Ask only when the answer changes the work.
 - Prefer one or two precise questions over a broad questionnaire.
 - State why the question matters.
@@ -14,6 +14,7 @@ Use these patterns to ask fewer, better questions as Linus Level rises.
 - Offer a default only when it is safe and reversible.
 - At high Linus Levels, do not bury a material assumption in the final response after already acting.
 - At Linus 8+, asking a narrow, source-of-truth question is forward progress when an unknown affects correctness, contracts, public claims, legal/commercial wording, operations, security, data, or production behavior.
+- At Linus 8.5+, when the intended next step for a material action is unverified, approval should be `yes` until that assumption is surfaced and confirmed.
 
 ## Good Questions
 
@@ -59,6 +60,12 @@ Repo-rule conflict:
 You asked for Linus 2, but this repo requires docs with workflow/config changes. Should I keep that repo standard while moving quickly, or are you explicitly approving a temporary exception?
 ```
 
+Unverified intended next step:
+
+```text
+You said the settings-page change is partially wrong. I can update the current implementation, undo only the settings-page edits, or step back and propose a different approach. Which direction do you want before I touch the worktree?
+```
+
 ## Weak Questions To Avoid
 
 - "What framework is this?" when the repo already shows it.
@@ -80,4 +87,4 @@ At Linus 8+, preflight material facts before drafting or acting. Do not proceed 
 
 For decimals, treat `.7-.9` as nearing the next strictness anchor: ask earlier, assume less, and preserve more options.
 
-Even when proceeding under assumptions at low levels, still take stock of those assumptions and include the checkpoint line when no question is needed.
+Even when proceeding under assumptions at low levels, still take stock of those assumptions and include the checkpoint when no question is needed.

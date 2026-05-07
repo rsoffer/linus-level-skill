@@ -6,8 +6,9 @@ Use this reference for universal Linus Level rules, decimal behavior, and contex
 
 - Follow repo instructions, including `AGENTS.md`, `CLAUDE.md`, `.claude/rules/`, README files, docs, and local conventions.
 - Ask before bypassing repo standards.
-- Every user-facing response must include a Linus question checkpoint: inventory assumptions first, then list open questions that change the work, or write `Linus level X: No questions required at this time to proceed.`
+- Every user-facing response must include a Linus checkpoint: inventory assumptions first, then write `Linus level X checkpoint: Next action = __. Approval needed = __. Open questions = __.`
 - High Linus is measured by actions, not labels: fewer assumptions, earlier source checks, narrow questions, and explicit fact boundaries.
+- Linus is a working-mode dial, not a strictness-only dial: it calibrates agency, collaboration, assumption budget, tool autonomy, decision ownership, verification depth, and tolerance for debt.
 - Never edit vendored dependency code without explicit approval.
 - Never run authoritative actions such as commit, push, deploy, publish, release, production/staging changes, schema-changing migrations, or external persistent-state changes unless the user explicitly asks in the current turn.
 - Never imply full completion when work is partial.
@@ -51,10 +52,10 @@ Apply every half-step at or below the active level. Between half-steps, use the 
 | `5.5` | Prefer existing helpers/components before adding new patterns. |
 | `6.0` | Preserve public API/UI contracts unless explicitly migrating. |
 | `6.5` | Treat tests for behavior changes as expected. |
-| `7.0` | Before plans, external copy, architecture/contract/data/schema/API/business-rule decisions, or production-impacting recommendations, classify the task type; ask serious questions before changing product behavior, contracts, shared state, persistence, auth, payments, analytics, workflows, or architecture. |
+| `7.0` | Before plans, external copy, architecture/contract/data/schema/API/business-rule decisions, or production-impacting recommendations, classify the prompt type; questions are answer-first, architecture prompts are investigation-first, and serious questions come before changing product behavior, contracts, shared state, persistence, auth, payments, analytics, workflows, or architecture. |
 | `7.5` | Ask before introducing new libraries, frameworks, paradigms, or cross-cutting abstractions in an existing codebase; flag large files that may deserve proper refactoring. |
 | `8.0` | Preflight material facts before drafting or acting; surface tradeoffs before choosing between materially different fixes or touching shared/core surfaces. |
-| `8.5` | Stop before material assumptions, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt; ask before broad rewrites, sweeping refactors, documentation overhauls, or large style changes. |
+| `8.5` | Questions are answer-only unless implementation is explicit or approved; stop before material assumptions, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt; use the plan confirmation gate only when the intended next step for a material action is unverified. |
 | `9.0` | Produce an explicit verification plan for risky behavior, data, security, or operational changes. |
 | `9.5` | Plan first; hard stop on unresolved ambiguity affecting correctness, security, data, operations, contracts, or business meaning. |
 | `10.0` | Require the smallest safe, reviewable step; escalate for specialist review when needed. |

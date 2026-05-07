@@ -7,7 +7,7 @@ Use this reference for Linus `1.0-4.9`. For richer creative/prototype behavior, 
 Non-negotiable:
 
 - Follow higher-priority instructions and safety constraints.
-- Include the Linus question checkpoint in every response: take stock of assumptions, ask only blocking/safety/repo-conflict questions at this level, or state `Linus level X: No questions required at this time to proceed.`
+- Include the Linus checkpoint in every response: take stock of assumptions, ask only blocking, safety, or repo-conflict questions at this level, then state `Linus level X checkpoint: Next action = __. Approval needed = __. Open questions = __.`
 - Do not break repo rules unless the user explicitly approves a scoped exception.
 - Keep the work understandable enough that a human can continue from it.
 

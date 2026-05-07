@@ -7,9 +7,9 @@
 
 ![Linus Level logo](assets/linus-level-logo-lockup-transparent.png)
 
-**Linus Level** gives coding agents like Codex, Claude, and other `SKILL.md`-aware workflows a `1.0-10.0` strictness dial for software work: from creative vibe-mode prototyping to careful maintainer-grade engineering.
+**Linus Level** gives coding agents like Codex, Claude, and other `SKILL.md`-aware workflows a `1.0-10.0` working-mode dial for software work: from creative vibe-mode prototyping to careful maintainer-grade engineering.
 
-The name is a software-culture wink to Linus Torvalds' reputation for exacting technical standards and maintainer seriousness. It is not about harsh communication. It is about giving agents a memorable control for how much freedom, skepticism, verification, security discipline, and code-review strictness a task deserves.
+The name is a software-culture wink to Linus Torvalds' reputation for exacting technical standards and maintainer seriousness. It is not about harsh communication. It is about giving agents a memorable control for how much freedom, skepticism, verification, collaboration, and decision ownership a task deserves. Strictness is only one axis.
 
 ## The Problem
 
@@ -42,14 +42,16 @@ Calibrate this task with Linus Level before coding.
 
 | Linus Level | Mode | Agent Behavior |
 |---:|---|---|
-| `1.0-1.9` | Vibe mode | Take the lead and ask almost nothing, but still inventory assumptions and include the question checkpoint. |
+| `1.0-1.9` | Vibe mode | Take the lead, infer intent aggressively, and optimize for momentum. |
 | `2.0-2.9` | Hack/sketch | Build the thing fast, accept local rough edges, prove the idea. |
 | `3.0-3.9` | Concept prototype | Make the concept coherent enough to evaluate and evolve. |
 | `4.0-4.9` | Product prototype | Move quickly, but avoid avoidable near-term mess. |
 | `5.0-6.9` | Product development | Use professional defaults, follow local patterns, test behavior changes. |
-| `7.0-8.4` | Established codebase | Preserve contracts, fix root causes, keep changes scoped and reviewable. |
-| `8.5-9.4` | Staff maintainer | Ask before material decisions; enforce DRY, security, and source-of-truth discipline. |
-| `9.5-10` | Kernel maintainer | Plan first, stop on dangerous ambiguity, verify deliberately. |
+| `7.0-8.4` | Established codebase | Preserve contracts, separate investigation from implementation when ambiguity matters, fix root causes, keep changes scoped and reviewable. |
+| `8.5-9.4` | Staff maintainer | Default to answer-first on material questions, ask before major decisions, and keep decision ownership with the human on shared or durable surfaces. |
+| `9.5-10` | Kernel maintainer | Plan first, stop on dangerous ambiguity, verify deliberately, and avoid unilateral moves on high-risk surfaces. |
+
+As the dial rises, the agent should assume less, verify more, and take less unilateral control over material product, contract, architecture, data, auth, and compatibility decisions.
 
 ## 📦 Copy/Paste Install Prompts
 
@@ -105,15 +107,15 @@ Decimals are not cosmetic. They interpolate between anchors.
 |---:|---|
 | `2.2` | Still scrappy. Lead creatively, but keep the concept understandable. |
 | `4.8` | Prototype speed, but start behaving like product development for contracts and repo conventions. |
-| `7.5` | Established-codebase mode with moderate-low assumptions. |
-| `7.8` | Leaning staff-maintainer: stricter DRY/source-of-truth review, more deliberate verification, and more skepticism toward new libraries or paradigms. |
-| `8.9` | Staff-maintainer leaning mission-critical: stop on more ambiguity and plan risky work. |
+| `7.5` | Established-codebase mode with moderate-low assumptions and more separation between investigation and implementation. |
+| `7.8` | Leaning staff-maintainer: stricter DRY/source-of-truth review, more deliberate verification, and earlier questions on material choices. |
+| `8.9` | Staff-maintainer leaning mission-critical: answer first, ask before wrong durable moves, and plan risky work. |
 
 Rule of thumb:
 
 - `.0-.2`: mostly the current anchor
 - `.3-.6`: blended behavior
-- `.7-.9`: pre-adopt important requirements from the next anchor when relevant
+- `.7-.9`: start behaving like the next level where it materially changes the work
 
 ## ❓ Question Behavior
 
@@ -123,7 +125,7 @@ Every Linus Level response must include a question checkpoint. The agent first t
 Linus level X: No questions required at this time to proceed.
 ```
 
-Higher Linus Level means fewer hidden assumptions. Serious clarifying questions start at `7.0+`; `9.5+` is not when ambiguity starts mattering, it is when high-risk ambiguity becomes a hard stop.
+Higher Linus Level means fewer hidden assumptions and less silent decision-making. Serious clarifying questions start at `7.0+`; `9.5+` is not when ambiguity starts mattering, it is when high-risk ambiguity becomes a hard stop.
 
 | Linus Level | Question Policy |
 |---:|---|
@@ -132,10 +134,12 @@ Higher Linus Level means fewer hidden assumptions. Serious clarifying questions 
 | `3.0-3.9` | Ask if ambiguity changes the concept, audience, or core interaction. |
 | `4.0-4.9` | Ask if ambiguity could make the prototype hard to evolve. |
 | `5.0-6.9` | Ask when ambiguity affects user-visible behavior, data shape, architecture, or verification. |
-| `7.0-7.9` | Ask serious questions before changing contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or long-term structure. |
-| `8.0-8.4` | Ask earlier and more precisely; if two plausible fixes have different long-term tradeoffs, surface them before choosing. |
-| `8.5-9.4` | Stop before material assumptions, migrations, dependencies, fallbacks, feature flags, compatibility paths, or accepted debt. |
+| `7.0-7.9` | Ask serious questions before changing contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or long-term structure. Treat questions and design prompts as investigation-first when ambiguity matters. |
+| `8.0-8.4` | Ask earlier and more precisely; if two plausible fixes have different long-term tradeoffs, surface them before choosing rather than silently picking one. |
+| `8.5-9.4` | Default to answer-first on material questions. Stop before material assumptions, migrations, dependencies, fallbacks, feature flags, compatibility paths, or accepted debt. |
 | `9.5-10` | Plan first; do not proceed through ambiguity that affects correctness, security, data, contracts, operations, or business meaning. |
+
+At high Linus, prompts like "why", "does", "should", "is there", "what about", and "how would" should be treated as questions, not as permission to edit code. If implementation seems useful, the agent should propose it and ask.
 
 Good high-Linus question:
 
@@ -165,6 +169,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Prefer cohesive, reviewable modules over large catch-all files | `5.0+` |
 | Preserve public API/UI contracts unless explicitly migrating | `6.0+` |
 | Tests for behavior changes | `6.5+` expected, stricter near `7.0+` |
+| Separate investigation from implementation when ambiguity is material | `7.0+` |
 | Ask serious clarifying questions when ambiguity affects product behavior, contracts, business rules, shared state, persistence, auth, payments, analytics, workflows, or architecture | `7.0+` |
 | Root-cause fixes over symptom patches | `7.0+` |
 | No unrelated refactors in targeted fixes | `7.0+` |
@@ -173,7 +178,9 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Ask before introducing new libraries, frameworks, paradigms, state models, or cross-cutting abstractions in an existing codebase | `7.5+` |
 | Flag large files as possible candidates for proper refactors when they create review, testing, ownership, or comprehension risk | `7.5+` |
 | Surface tradeoffs before choosing between materially different fixes | `8.0+` |
+| Treat questions and architecture prompts as answer-first rather than edit permission | `8.0+`, stronger at `8.5+` |
 | Stop before material assumptions, new complexity, compatibility paths, feature flags, fallbacks, migrations, dependencies, or accepted debt | `8.5+` |
+| Keep decision ownership with the human for material contract, architecture, compatibility, persistence, auth, data, or business-behavior choices unless implementation is explicit | `8.5+` |
 | Scale edit scope with Linus Level: lower levels allow broader exploration; higher levels increasingly favor surgical, reviewable edits | Always; stricter as level rises |
 | Treat existing architecture, framework choices, and module boundaries as authoritative unless explicitly revisiting them | `8.5+` |
 | No hidden fallbacks, shims, shadow state, or parallel implementations without approval | `8.5+` |
@@ -244,7 +251,7 @@ The agent should inspect surrounding state/data flow, preserve API and UI contra
 Use Linus Level 8.8. Add a new "quality score" filter to the session-ranking feature in this established production app.
 ```
 
-The agent should ask before changing scoring semantics, centralize business rules, avoid duplicated thresholds, update tests, and document behavior changes.
+The agent should ask before changing scoring semantics, centralize business rules, avoid duplicated thresholds, update tests, and document behavior changes. If the user had instead asked whether the filter should exist or where it should live, the agent should answer first before editing.
 
 ```text
 Use Linus Level 9.7. Update the password reset flow to add device-session revocation after a successful reset.
