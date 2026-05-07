@@ -1,0 +1,15 @@
+{
+  "name": "linus-level-skills",
+  "description": "Factory Droid plugins for calibrated engineering strictness and maintainer-grade coding workflows.",
+  "owner": {
+    "name": "Ron Soffer"
+  },
+  "plugins": [
+    {
+      "name": "linus-level",
+      "description": "Tune Droid from fast prototype mode to careful maintainer mode with a 1.0-10.0 engineering strictness dial.",
+      "source": "./",
+      "category": "Productivity"
+    }
+  ]
+}

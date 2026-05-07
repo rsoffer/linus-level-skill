@@ -280,6 +280,10 @@ Linus Level is distributed as a portable `SKILL.md` repository today. It also in
 | Claude Code | Repository marketplace | Uses `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. |
 | OpenAI hosted skills | Zip upload | Package `skills/linus-level/` with `scripts/package-skill.sh`. |
 | Claude custom skills | Zip or project/user skill folder | Same canonical `skills/linus-level/` directory. |
+| Gemini CLI | Extension install | Uses root `gemini-extension.json` plus `skills/linus-level/`. |
+| Factory Droid | Repository marketplace | Uses `.factory-plugin/marketplace.json` and `.factory-plugin/plugin.json`. |
+| GitHub Copilot CLI | Repository marketplace | Uses `.github/plugin/marketplace.json`; Copilot can also read the Claude plugin manifest. |
+| OpenCode | Native skill discovery | Uses the canonical `skills/linus-level/SKILL.md` layout. |
 | Other `SKILL.md` agents | Filesystem install | Preserve `SKILL.md`, `references/`, `agents/`, and `assets/`. |
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for publishing steps and marketplace research.
@@ -380,6 +384,62 @@ For a home-local marketplace, `./plugins/linus-level` resolves to:
 ```
 
 See `marketplace.example.json` for a complete sample marketplace file.
+
+## Gemini CLI Install
+
+Linus Level can be installed as a Gemini CLI extension from this repository:
+
+```bash
+gemini extensions install https://github.com/rsoffer/linus-level-skill
+```
+
+The extension exposes the bundled skill from `skills/linus-level/SKILL.md`.
+
+## Factory Droid Install
+
+Linus Level can be installed as a Droid plugin from this repository's Factory marketplace:
+
+```bash
+droid plugin marketplace add https://github.com/rsoffer/linus-level-skill
+droid plugin install linus-level@linus-level-skills
+```
+
+For local development:
+
+```bash
+droid plugin marketplace add "$(pwd)"
+droid plugin install linus-level@linus-level-skills
+```
+
+## GitHub Copilot CLI Install
+
+Linus Level can be installed as a GitHub Copilot CLI plugin from this repository's marketplace:
+
+```bash
+copilot plugin marketplace add https://github.com/rsoffer/linus-level-skill
+copilot plugin install linus-level@linus-level-skills
+```
+
+Copilot CLI also supports direct GitHub installs:
+
+```bash
+copilot plugin install rsoffer/linus-level-skill
+```
+
+## OpenCode Install
+
+OpenCode discovers Agent Skills from project and user skill directories. Install Linus Level by copying or symlinking the canonical skill directory into one of OpenCode's native locations:
+
+```bash
+mkdir -p ~/.config/opencode/skill
+ln -s "$(pwd)/skills/linus-level" ~/.config/opencode/skill/linus-level
+```
+
+For a project-local install, place or symlink it at:
+
+```text
+<project>/.opencode/skill/linus-level
+```
 
 ## Deployment
 
