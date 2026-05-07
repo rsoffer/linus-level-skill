@@ -38,7 +38,7 @@ Use Linus Level 2 for fast creative prototyping.
 Calibrate this task with Linus Level before coding.
 ```
 
-## 🎚️ The Dial
+## 🎛️ The Dial
 
 | Linus Level | Mode | Agent Behavior |
 |---:|---|---|
@@ -95,7 +95,7 @@ Unless the user explicitly states otherwise in the current prompt, invoke the Li
 
 ## 🧭 Default Workspace Setting
 
-Linus Level works best when a project carries its normal default in repo instructions. This is especially useful after compaction, restarts, or handoffs between agents.
+Linus Level works best when a project carries its normal default in repo instructions. The main reason is context compaction: long agent sessions eventually get summarized, and that summary can lose the exact Linus Level the model was supposed to keep using. A short line in `AGENTS.md`, `CLAUDE.md`, or the equivalent repo instructions file gives the agent a durable source of truth it can reload after compaction, restarts, or handoffs.
 
 Add this to `AGENTS.md`, `CLAUDE.md`, or the equivalent agent instructions file for the workspace:
 
