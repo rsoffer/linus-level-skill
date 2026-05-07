@@ -447,4 +447,4 @@ For hosted OpenAI and Claude skill upload, GitHub release steps, and bundle pack
 
 ## License
 
-MIT
+MIT. Copyright (c) 2026 Ron Soffer.
