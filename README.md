@@ -1,5 +1,10 @@
 # Linus Level Skill
 
+[![version](https://img.shields.io/github/v/tag/rsoffer/linus-level-skill?style=for-the-badge&label=Version&color=111827)](https://github.com/rsoffer/linus-level-skill/tags)
+[![license](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](./LICENSE)
+[![skill](https://img.shields.io/badge/Skill-SKILL.md-2563eb?style=for-the-badge)](./skills/linus-level/SKILL.md)
+[![agents](https://img.shields.io/badge/Agents-Codex%20%7C%20Claude%20%7C%20SKILL.md--aware-0f766e?style=for-the-badge)](#copy-paste-install-prompts)
+
 ![Linus Level logo](assets/linus-level-logo-lockup-transparent.png)
 
 **Linus Level** gives coding agents like Codex, Claude, and other `SKILL.md`-aware workflows a `1.0-10.0` strictness dial for software work: from creative vibe-mode prototyping to careful maintainer-grade engineering.
@@ -10,16 +15,16 @@ The name is a software-culture wink to Linus Torvalds' reputation for exacting t
 
 AI coding agents are asked to behave in wildly different contexts:
 
-- "Vibe-code this idea into existence."
-- "Prototype a weird UI direction quickly."
-- "Patch a production codebase without breaking contracts."
-- "Touch auth, data, security, infra, or business rules safely."
+- "Vibe-code this idea into existence." ⚡
+- "Prototype a weird UI direction quickly." ✨
+- "Patch a production codebase without breaking contracts." 🛠️
+- "Touch auth, data, security, infra, or business rules safely." 🔒
 
 Without calibration, an agent may guess wrong. It may over-engineer a throwaway sketch, or worse, treat a mission-critical production system like a loose prototype.
 
 Linus Level makes the expected behavior explicit.
 
-## Quick Start
+## ⚡ Quick Start
 
 ```text
 Use $linus-level at Linus Level 8.5 for this production codebase task.
@@ -33,7 +38,7 @@ Use Linus Level 2 for fast creative prototyping.
 Calibrate this task with Linus Level before coding.
 ```
 
-## The Dial
+## 🎚️ The Dial
 
 | Linus Level | Mode | Agent Behavior |
 |---:|---|---|
@@ -46,9 +51,11 @@ Calibrate this task with Linus Level before coding.
 | `8.5-9.4` | Staff maintainer | Ask before material decisions; enforce DRY, security, and source-of-truth discipline. |
 | `9.5-10` | Kernel maintainer | Plan first, stop on dangerous ambiguity, verify deliberately. |
 
-## Copy/Paste Install Prompts
+## 📦 Copy/Paste Install Prompts
 
-Paste one of these into your coding agent to have it install Linus Level from this repository:
+Paste one of these into your coding agent to have it install Linus Level from this repository.
+
+After installing, the agent should also ask whether you want a default Linus Level added to this workspace's `AGENTS.md` or `CLAUDE.md`. That default helps after context compaction, because the model can rediscover the setting from repo instructions instead of relying on conversation memory.
 
 ### Codex
 
@@ -56,6 +63,10 @@ Paste one of these into your coding agent to have it install Linus Level from th
 Install the Linus Level skill from https://github.com/rsoffer/linus-level-skill.
 
 Please clone or fetch the repository, install the canonical skill directory `skills/linus-level` into my Codex skills directory at `${CODEX_HOME:-$HOME/.codex}/skills/linus-level`, and verify that the skill is discoverable afterward. Preserve the `SKILL.md`, `references/`, `agents/`, and `assets/` files. Do not expose or modify any secrets.
+
+After installation, ask me whether I want to add a default Linus Level instruction to this workspace's `AGENTS.md`. If I say yes, add or update the file with a line like:
+
+Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
 ```
 
 ### Claude Code
@@ -64,6 +75,10 @@ Please clone or fetch the repository, install the canonical skill directory `ski
 Install the Linus Level Claude Code plugin from https://github.com/rsoffer/linus-level-skill.
 
 Please add the repository as a Claude Code plugin marketplace, install `linus-level@linus-level-skills`, reload plugins if needed, and verify that `/linus-level` or `/linus-level:linus-level` resolves.
+
+After installation, ask me whether I want to add a default Linus Level instruction to this workspace's `CLAUDE.md` or `AGENTS.md`. If I say yes, add or update the file with a line like:
+
+Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
 ```
 
 ### Other Agents
@@ -72,13 +87,43 @@ Please add the repository as a Claude Code plugin marketplace, install `linus-le
 Install the Linus Level agent skill from https://github.com/rsoffer/linus-level-skill.
 
 This repository uses the Agent Skills `SKILL.md` format. Please install the canonical skill folder at `skills/linus-level` into this agent's user or project skills directory, preserving `SKILL.md` plus its `references/`, `agents/`, and `assets/` subdirectories. After installation, verify that the skill named `linus-level` is available and can be invoked for prompts like "Use Linus Level 8.5".
+
+After installation, ask me whether I want to add a default Linus Level instruction to this workspace's agent instructions file, such as `AGENTS.md` or `CLAUDE.md`. If I say yes, add or update the file with a line like:
+
+Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
 ```
 
-## Context-Light By Design
+## 🧭 Default Workspace Setting
+
+Linus Level works best when a project carries its normal default in repo instructions. This is especially useful after compaction, restarts, or handoffs between agents.
+
+Add this to `AGENTS.md`, `CLAUDE.md`, or the equivalent agent instructions file for the workspace:
+
+```md
+Unless the user explicitly states otherwise in the current prompt, invoke the Linus Level skill at `7.5` for each request in this workspace. Treat Linus Level as a tuning layer only; it does not override higher-priority instructions or repository-specific rules.
+```
+
+Adjust `7.5` to match the repo. A greenfield prototype might default closer to `4.0`; an established production app usually belongs around `7.5-8.5`.
+
+## 🧩 Marketplace Notes
+
+Linus Level is distributed as a portable `SKILL.md` repository today. It also includes Codex and Claude plugin metadata so it can be installed through compatible marketplace flows.
+
+| Harness | Current path | Notes |
+|---|---|---|
+| Codex | GitHub repo / local skill install | Uses `.codex-plugin/plugin.json` plus `skills/linus-level/`. |
+| Claude Code | Repository marketplace | Uses `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. |
+| OpenAI hosted skills | Zip upload | Package `skills/linus-level/` with `scripts/package-skill.sh`. |
+| Claude custom skills | Zip or project/user skill folder | Same canonical `skills/linus-level/` directory. |
+| Other `SKILL.md` agents | Filesystem install | Preserve `SKILL.md`, `references/`, `agents/`, and `assets/`. |
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for publishing steps and marketplace research.
+
+## 🪶 Context-Light By Design
 
 Linus Level is modular on purpose. The main skill stays small, then loads deeper references only when the task calls for them: level-band standards for code work, security standards for sensitive surfaces, question patterns for ambiguity, and the low-level playbook for fast prototypes.
 
-## Decimal Points Matter
+## 🔢 Decimal Points Matter
 
 Decimals are not cosmetic. They interpolate between anchors.
 
@@ -96,7 +141,7 @@ Rule of thumb:
 - `.3-.6`: blended behavior
 - `.7-.9`: pre-adopt important requirements from the next anchor when relevant
 
-## Question Behavior
+## ❓ Question Behavior
 
 Every Linus Level response must include a question checkpoint. The agent first takes stock of assumptions it is making, then either asks the open questions appropriate for the active level, or explicitly says:
 
@@ -130,7 +175,7 @@ Good low-Linus behavior:
 I'll pick a bold direction and build the first usable version. I'll keep the code easy enough to continue from, but I won't stop for minor choices.
 ```
 
-## Engineering Standards By Level
+## 🛠️ Engineering Standards By Level
 
 The skill teaches coding agents which standards become expected or non-negotiable as the dial rises.
 
@@ -163,7 +208,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Plan before implementation | `9.5+` |
 | Hard stop on unresolved ambiguity affecting correctness, security, data, operations, contracts, or business meaning | `9.5+` |
 
-## Security Posture By Level
+## 🔒 Security Posture By Level
 
 Security is not bolted on. Linus Level tunes security discipline too.
 
@@ -183,7 +228,7 @@ Security is not bolted on. Linus Level tunes security discipline too.
 | Threat-model note before security-sensitive implementation | `9.5+` |
 | Exposed secrets, auth bypass, privilege escalation, data leak, high/critical dependency vulnerability, or production security misconfig are blockers | `9.5+` |
 
-## Repository Rules Still Win
+## 🧱 Repository Rules Still Win
 
 Linus Level is a tuning layer, not an authority layer.
 
@@ -201,7 +246,7 @@ Precedence:
 4. Linus Level behavior
 5. agent defaults
 
-## Example Prompts
+## 💬 Example Prompts
 
 ```text
 Use Linus Level 1.5. Build a playful one-screen web toy that lets me remix a product name into ridiculous startup taglines.

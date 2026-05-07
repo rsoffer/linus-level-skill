@@ -6,6 +6,61 @@ This repository supports three distribution shapes:
 - Filesystem installs for Codex, Claude Code, and other `SKILL.md`-aware agent workflows
 - GitHub release distribution
 
+## Marketplace Inventory
+
+Superpowers currently points users at several agent marketplaces and install surfaces:
+
+| Surface | Superpowers path | Linus Level implication |
+|---|---|---|
+| Claude Code official marketplace | `/plugin install superpowers@claude-plugins-official` | Requires Anthropic marketplace submission after validating `.claude-plugin/`. |
+| Superpowers Claude marketplace | `/plugin marketplace add obra/superpowers-marketplace` | Same Claude marketplace format; Linus Level already has `.claude-plugin/marketplace.json`. |
+| Codex official marketplace | Codex CLI/App plugin search | Requires Codex plugin publication or inclusion in a marketplace/index. |
+| Factory Droid | `droid plugin marketplace add https://github.com/obra/superpowers` | Requires Factory-compatible plugin metadata or a compatible marketplace repo. |
+| Gemini CLI | `gemini extensions install https://github.com/obra/superpowers` | Requires `gemini-extension.json` at the repo or release archive root to publish as a Gemini extension. |
+| OpenCode | `opencode.json` plugin entry with `git+https://...` | Can use OpenCode's plugin package style or direct `SKILL.md` discovery paths. |
+| Cursor | `/add-plugin superpowers` | Requires Cursor plugin marketplace submission/availability; details appear marketplace-managed rather than repo-only. |
+| GitHub Copilot CLI | `copilot plugin marketplace add ...` then `copilot plugin install ...` | Requires Copilot CLI plugin metadata and marketplace catalog support. |
+
+Additional relevant marketplaces and indexes found during research:
+
+| Surface | Publishing signal | Notes |
+|---|---|---|
+| Claude Code plugin marketplaces | Create `.claude-plugin/marketplace.json`, host on GitHub, test with `/plugin marketplace add`, then users install `plugin@marketplace`. | Anthropic docs recommend GitHub hosting and say plugin versions only update for users when the manifest version changes, unless omitted and commit SHA versioning is used. |
+| Codex / OpenAI plugins | OpenAI's `openai/plugins` repo documents curated plugin examples under `plugins/<name>/` with `.codex-plugin/plugin.json`. | Current public third-party distribution is still mostly GitHub/local marketplace driven; keep `.codex-plugin/plugin.json` valid and scanner-ready. |
+| Codex Marketplace (`codex-marketplace.com`) | Submit or index GitHub plugin/skill repos, with install commands such as `npx codex-marketplace add owner/repo/skills/name --skill`. | Community marketplace, not OpenAI official. Useful for discoverability without a release bump if metadata is already valid. |
+| Awesome Codex Plugins | Generated curated marketplace/list; recommends lint/verify with `codex-plugin-scanner`. | Good discovery target once this repo is scanner-clean. |
+| Factory Droid plugins | Factory docs support marketplace add from GitHub, other git hosts, or local paths; team installs can be seeded through `.factory/settings.json`. | Factory uses `.factory-plugin/plugin.json` for native plugins, so this repo would need an adapter if we want first-class Droid install. |
+| Gemini CLI extension gallery | Public GitHub repo, `gemini-cli-extension` topic, and root `gemini-extension.json`; release archives must contain `gemini-extension.json` at archive root. | Could wrap the existing `skills/linus-level` directory as a Gemini extension. |
+| OpenCode skills | OpenCode discovers `SKILL.md` files from `.opencode/skills`, `.claude/skills`, `.agents/skills`, and global equivalents. | No marketplace wrapper is required for skill discovery; plugin-package publishing is separate. |
+| GitHub Copilot CLI marketplaces | `marketplace.json` under `.github/plugin/`; Copilot also looks for `.claude-plugin/marketplace.json`. | The current Claude marketplace may be partially reusable, but a Copilot-native plugin wrapper should be tested separately. |
+
+## Publishing Checklist
+
+Use this checklist when publishing or submitting Linus Level somewhere new:
+
+1. Keep the canonical source at `skills/linus-level/`.
+2. Verify `SKILL.md` frontmatter has the right `name`, `description`, and compatible file layout.
+3. Validate the target wrapper:
+   - Claude Code: `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`
+   - Codex: `.codex-plugin/plugin.json`
+   - Gemini: future `gemini-extension.json`
+   - Factory Droid: future `.factory-plugin/plugin.json`
+   - GitHub Copilot CLI: future `.github/plugin/marketplace.json` or tested reuse of `.claude-plugin/marketplace.json`
+4. Test a local install before advertising the path.
+5. Update docs when the install path changes.
+6. Bump version only when the target marketplace requires version-based updates or the skill behavior changes.
+
+References:
+
+- Claude Code marketplace docs: `https://code.claude.com/docs/en/plugin-marketplaces`
+- Claude Code install docs: `https://code.claude.com/docs/en/discover-plugins`
+- OpenAI plugin examples: `https://github.com/openai/plugins`
+- Codex Marketplace docs: `https://www.codex-marketplace.com/docs`
+- Gemini extension docs: `https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md`
+- Factory Droid plugin docs: `https://docs.factory.ai/cli/configuration/plugins`
+- OpenCode skills docs: `https://opencode.ai/docs/skills/`
+- GitHub Copilot CLI plugin reference: `https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference`
+
 ## Hosted OpenAI Skill Upload
 
 OpenAI's Skills API uploads the skill bundle itself, not the whole Codex compatibility wrapper. For this repo, the upload target is:
