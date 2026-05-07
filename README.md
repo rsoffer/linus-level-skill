@@ -119,10 +119,10 @@ Rule of thumb:
 
 ## ❓ Question Behavior
 
-Every Linus Level response must include a question checkpoint. The agent first takes stock of assumptions it is making, then either asks the open questions appropriate for the active level, or explicitly says:
+Every Linus Level response must include a question checkpoint. The agent first takes stock of assumptions it is making, then states the intended next action, whether approval is needed, and which open questions remain:
 
 ```text
-Linus level X: No questions required at this time to proceed.
+Linus level X checkpoint: Next action = __. Approval needed = __. Open questions = __.
 ```
 
 Higher Linus Level means fewer hidden assumptions and less silent decision-making. Serious clarifying questions start at `7.0+`; `9.5+` is not when ambiguity starts mattering, it is when high-risk ambiguity becomes a hard stop.
@@ -162,7 +162,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Follow system, user, repo, and tool instructions | Always |
 | Ask before bypassing repo rules | Always |
 | No secrets, malicious behavior, or hidden partial completion | Always |
-| Include a question checkpoint in every response: inventory assumptions first, ask needed open questions, or state `Linus level X: No questions required at this time to proceed.` | Always |
+| Include a question checkpoint in every response: inventory assumptions first, then state `Next action`, `Approval needed`, and `Open questions` | Always |
 | Keep changes scoped | `5.0+` |
 | Match existing style before inventing patterns | `5.0+` |
 | Do not silently hide failures | `5.0+` |
