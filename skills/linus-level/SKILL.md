@@ -119,10 +119,15 @@ Every user-facing response under Linus Level must include a compact checkpoint. 
 - If any assumption would change the work, list the resulting open question briefly and ask the smallest useful set.
 - Use this default checkpoint format when no special state needs surfacing: `LL X · No approval · No open questions`.
 - Replace `X` with the active or inferred Linus Level.
-- Expand the checkpoint only when Linus Level needs to surface something material: approval needed, open questions, assumptions, blocked state, verification gaps, risk, read-only/no-change status, external state, or persistent changes.
+- `No open questions` means no unresolved user input is needed: no unanswered question, approval, confirmation, option choice, or material decision remains.
+- Expand the checkpoint whenever Linus Level needs to surface something material: approval needed, decision needed, open questions, assumptions, blocked state, verification gaps, risk, read-only/no-change status, external state, or persistent changes.
+- If approval is needed, do not pair it with `No open questions`; use `Decision needed`, `Awaiting confirmation`, or a counted open question/decision.
+- If the response presents multiple viable material options and asks or implies that the user must choose or approve one, the checkpoint must say `Decision needed` or count the open decision.
 - Expanded checkpoint examples:
-  - `LL X · Approval needed · No open questions`
+  - `LL X · Approval needed · Decision needed`
+  - `LL X · Approval needed · Awaiting confirmation`
   - `LL X · No approval · 1 open question`
+  - `LL X · No approval · 1 open decision`
   - `LL X · No approval · No open questions · Assumption surfaced`
   - `LL X · Blocked · 1 open question`
   - `LL X · No approval · No open questions · Read-only`
@@ -146,7 +151,7 @@ At Linus 8.5+, stop and ask before changing auth, permissions, billing, PII, sec
 For every task, classify decisions as:
 
 - `Agent-owned`: the agent may decide and act.
-- `Shared`: the agent should recommend, then ask if the decision is material.
+- `Shared`: the agent should recommend, then ask if the decision is material. A material shared decision counts as unresolved user input until the user chooses, approves, or explicitly delegates it.
 - `User-owned`: the agent must ask before acting.
 
 As Linus increases, more decisions move from `agent-owned` to `shared` or `user-owned`.
@@ -336,7 +341,7 @@ Use these principles at all levels:
 
 ## Delivery
 
-Every final answer under Linus Level must preserve the checkpoint from Question Budget. Use the compact default `LL X · No approval · No open questions` unless a material state needs to be surfaced; then expand it with the specific state, such as approval needed, open questions, surfaced assumptions, blocked work, verification gaps, risks, or read-only/no-change status.
+Every final answer under Linus Level must preserve the checkpoint from Question Budget. Use the compact default `LL X · No approval · No open questions` only when no unresolved user input remains; then expand it with the specific state, such as approval needed, decision needed, open questions, surfaced assumptions, blocked work, verification gaps, risks, or read-only/no-change status. Do not write `No open questions` when approval, confirmation, option choice, or another material user decision is still needed.
 
 At Linus 7+, final responses should include what changed, files touched, verification run, and residual risks when relevant.
 

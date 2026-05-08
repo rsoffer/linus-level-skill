@@ -129,10 +129,13 @@ The checkpoint expands only when Linus Level needs to surface something material
 
 ```text
 LL 7.5 · No approval · 1 open question
-LL 8.5 · Approval needed · No open questions
+LL 8.5 · Approval needed · Decision needed
+LL 8.5 · Approval needed · Awaiting confirmation
 LL 8 · Blocked · 1 open question
 LL 7.5 · No approval · No open questions · Verification incomplete
 ```
+
+`No open questions` means no unresolved user input is needed: no question, approval, confirmation, option choice, or material decision remains. If the agent presents multiple material fix options and needs the user to choose or approve one, the checkpoint should say `Decision needed` or count the open decision.
 
 Higher Linus Level means fewer hidden assumptions and less silent decision-making. Serious clarifying questions start at `7.0+`; `9.5+` is not when ambiguity starts mattering, it is when high-risk ambiguity becomes a hard stop.
 
@@ -171,7 +174,7 @@ The skill teaches coding agents which standards become expected or non-negotiabl
 | Follow system, user, repo, and tool instructions | Always |
 | Ask before bypassing repo rules | Always |
 | No secrets, malicious behavior, or hidden partial completion | Always |
-| Include a compact checkpoint in every response: inventory assumptions first, then state approval and open-question status, expanding only for material surfaced states | Always |
+| Include a compact checkpoint in every response: inventory assumptions first, then state approval and open-input status, expanding for material surfaced states and never saying `No open questions` when approval, confirmation, option choice, or a material decision remains | Always |
 | Keep changes scoped | `5.0+` |
 | Match existing style before inventing patterns | `5.0+` |
 | Do not silently hide failures | `5.0+` |
