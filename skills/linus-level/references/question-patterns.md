@@ -4,7 +4,7 @@ Use these patterns to ask fewer, better questions as Linus Level rises.
 
 ## Principles
 
-- Every Linus response needs a checkpoint: identify assumptions first, then state `Linus level X checkpoint: Next action = __. Approval needed = __. Open questions = __.`
+- Every Linus response needs a checkpoint: identify assumptions first, then use the compact default `LL X · No approval · No open questions` unless Linus Level needs to surface approval, open questions, assumptions, blocked work, verification gaps, risk, or read-only/no-change status.
 - Ask only when the answer changes the work.
 - Prefer one or two precise questions over a broad questionnaire.
 - State why the question matters.
@@ -87,4 +87,4 @@ At Linus 8+, preflight material facts before drafting or acting. Do not proceed 
 
 For decimals, treat `.7-.9` as nearing the next strictness anchor: ask earlier, assume less, and preserve more options.
 
-Even when proceeding under assumptions at low levels, still take stock of those assumptions and include the checkpoint when no question is needed.
+Even when proceeding under assumptions at low levels, still take stock of those assumptions and include the compact checkpoint when no question is needed.

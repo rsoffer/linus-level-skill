@@ -20,7 +20,7 @@ Still required:
 
 - Follow repo instructions unless the user explicitly approves an exception.
 - Take stock of assumptions before deciding whether any question is needed.
-- If no question is needed, still make the next step explicit with `Linus level X checkpoint: Next action = __. Approval needed = no. Open questions = none.`
+- If no question is needed, still include the compact checkpoint: `LL X · No approval · No open questions`.
 - Do not compromise safety, security, privacy, or legal constraints.
 - Do not run authoritative actions without explicit approval.
 

@@ -111,16 +111,24 @@ For exact half-step deltas, read `references/standards-core.md`.
 
 Ask questions only when the answer changes the work. Do not ask performative setup questions when local context can answer them.
 
-Every user-facing response under Linus Level must include a checkpoint. Before deciding whether questions are needed, take stock of assumptions made or about to be made at the active level:
+Every user-facing response under Linus Level must include a compact checkpoint. Before deciding whether questions are needed, take stock of assumptions made or about to be made at the active level:
 
 - Identify the assumptions, including implicit assumptions from the user's wording, local context, repo patterns, defaults, inferred intent, and missing facts.
 - Decide which assumptions are safe/reversible and which could change the work at the active Linus Level.
 - Surface material assumptions when they shape the answer, even if no question is required.
 - If any assumption would change the work, list the resulting open question briefly and ask the smallest useful set.
-- Use this exact checkpoint format: `Linus level X checkpoint: Next action = <answer/investigate/propose/edit>. Approval needed = <yes/no>. Open questions = <none/list>.`
+- Use this default checkpoint format when no special state needs surfacing: `LL X · No approval · No open questions`.
 - Replace `X` with the active or inferred Linus Level.
-- `No questions required` is valid only when the next action is `answer`, `investigate`, or `propose`, or when implementation was explicitly requested and no material ambiguity remains.
-- If the next action is material and the intended next step is unverified, approval is required. Surface the assumption, ask the smallest concrete question, and stop.
+- Expand the checkpoint only when Linus Level needs to surface something material: approval needed, open questions, assumptions, blocked state, verification gaps, risk, read-only/no-change status, external state, or persistent changes.
+- Expanded checkpoint examples:
+  - `LL X · Approval needed · No open questions`
+  - `LL X · No approval · 1 open question`
+  - `LL X · No approval · No open questions · Assumption surfaced`
+  - `LL X · Blocked · 1 open question`
+  - `LL X · No approval · No open questions · Read-only`
+  - `LL X · No approval · No open questions · Verification incomplete`
+- If no question is needed, `No open questions` is valid when proceeding is safe at the active level or when implementation was explicitly requested and no material ambiguity remains.
+- If a material intended step is unverified, approval is required. Surface the assumption, ask the smallest concrete question, and stop.
 
 - **1.0-1.9:** Ask only if blocked, unsafe, or repo rules create a conflict. Otherwise take the lead.
 - **2.0-2.9:** Ask only for hard blockers or major product direction forks.
@@ -238,7 +246,7 @@ For external-facing submissions, legal/commercial copy, app store/API applicatio
 
 At Linus 8+, "be proactive" means proactively verify, identify unknowns, and ask the smallest necessary question. A high-signal question is forward progress.
 
-At Linus 8.5+, before any material action with an unverified intended next step, make the intended action visible through the checkpoint and, when needed, the plan confirmation gate. High-Linus quality includes surfacing the assumption and asking whether that is the direction the user wants.
+At Linus 8.5+, before any material action with an unverified intended step, make the approval need visible through the checkpoint and, when needed, the plan confirmation gate. High-Linus quality includes surfacing the assumption and asking whether that is the direction the user wants.
 
 Before the final response at Linus 8+, self-check:
 
@@ -328,7 +336,7 @@ Use these principles at all levels:
 
 ## Delivery
 
-Every final answer under Linus Level must preserve the checkpoint from Question Budget: take stock of assumptions, then include `Linus level X checkpoint: Next action = __. Approval needed = __. Open questions = __.`
+Every final answer under Linus Level must preserve the checkpoint from Question Budget. Use the compact default `LL X · No approval · No open questions` unless a material state needs to be surfaced; then expand it with the specific state, such as approval needed, open questions, surfaced assumptions, blocked work, verification gaps, risks, or read-only/no-change status.
 
 At Linus 7+, final responses should include what changed, files touched, verification run, and residual risks when relevant.
 
