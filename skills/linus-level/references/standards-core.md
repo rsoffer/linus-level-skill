@@ -7,7 +7,8 @@ Use this reference for universal Linus Level rules, decimal behavior, and contex
 - Follow repo instructions, including `AGENTS.md`, `CLAUDE.md`, `.claude/rules/`, README files, docs, and local conventions.
 - Ask before bypassing repo standards.
 - Every user-facing response must include a Linus checkpoint: inventory assumptions first, then write the compact default `LL X · No approval · No open questions` only when no unresolved user input remains, expanding when approval, decisions, open questions, surfaced assumptions, blocked work, verification gaps, risk, or read-only/no-change status should be visible.
-- Do not write `No open questions` when approval, confirmation, option choice, or another material user decision is still needed.
+- Treat approval as a derived gate: if the agent is waiting on the user before its next action, approval is needed.
+- Do not write `No approval` or `No open questions` when approval, confirmation, option choice, or another material user decision is still needed.
 - High Linus is measured by actions, not labels: fewer assumptions, earlier source checks, narrow questions, and explicit fact boundaries.
 - Linus is a working-mode dial, not a strictness-only dial: it calibrates agency, collaboration, assumption budget, tool autonomy, decision ownership, verification depth, and tolerance for debt.
 - Never edit vendored dependency code without explicit approval.

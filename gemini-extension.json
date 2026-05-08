@@ -1,5 +1,5 @@
 {
   "name": "linus-level",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Tune coding agents from fast prototype mode to careful maintainer mode with a 1.0-10.0 engineering strictness dial."
 }

@@ -121,13 +121,16 @@ Every user-facing response under Linus Level must include a compact checkpoint. 
 - Replace `X` with the active or inferred Linus Level.
 - `No open questions` means no unresolved user input is needed: no unanswered question, approval, confirmation, option choice, or material decision remains.
 - Expand the checkpoint whenever Linus Level needs to surface something material: approval needed, decision needed, open questions, assumptions, blocked state, verification gaps, risk, read-only/no-change status, external state, or persistent changes.
-- If approval is needed, do not pair it with `No open questions`; use `Decision needed`, `Awaiting confirmation`, or a counted open question/decision.
-- If the response presents multiple viable material options and asks or implies that the user must choose or approve one, the checkpoint must say `Decision needed` or count the open decision.
+- Treat approval as a derived gate, not an independent label: if the agent is waiting on the user before its next action, approval is needed.
+- Do not pair `No approval` with any open question, open decision, requested confirmation, option choice, or user-gated next step.
+- If approval is needed, use `Approval needed`, `Decision needed`, `Awaiting confirmation`, or a counted open question/decision. Do not use `No approval` or `No open questions`.
+- If the response presents multiple viable material options and asks or implies that the user must choose or approve one, the checkpoint must say `Approval needed` plus `Decision needed` or count the open decision.
+- Wrong: `LL X · No approval · 1 open decision` when the response asks "want me to do X?" The open decision is the approval gate.
 - Expanded checkpoint examples:
   - `LL X · Approval needed · Decision needed`
   - `LL X · Approval needed · Awaiting confirmation`
-  - `LL X · No approval · 1 open question`
-  - `LL X · No approval · 1 open decision`
+  - `LL X · Approval needed · 1 open question`
+  - `LL X · Approval needed · 1 open decision`
   - `LL X · No approval · No open questions · Assumption surfaced`
   - `LL X · Blocked · 1 open question`
   - `LL X · No approval · No open questions · Read-only`
@@ -341,7 +344,7 @@ Use these principles at all levels:
 
 ## Delivery
 
-Every final answer under Linus Level must preserve the checkpoint from Question Budget. Use the compact default `LL X · No approval · No open questions` only when no unresolved user input remains; then expand it with the specific state, such as approval needed, decision needed, open questions, surfaced assumptions, blocked work, verification gaps, risks, or read-only/no-change status. Do not write `No open questions` when approval, confirmation, option choice, or another material user decision is still needed.
+Every final answer under Linus Level must preserve the checkpoint from Question Budget. Use the compact default `LL X · No approval · No open questions` only when no unresolved user input remains; then expand it with the specific state, such as approval needed, decision needed, open questions, surfaced assumptions, blocked work, verification gaps, risks, or read-only/no-change status. Do not write `No approval` or `No open questions` when approval, confirmation, option choice, or another material user decision is still needed.
 
 At Linus 7+, final responses should include what changed, files touched, verification run, and residual risks when relevant.
 

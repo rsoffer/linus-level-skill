@@ -34,7 +34,7 @@ Non-negotiable:
 Expected:
 
 - Flag large or catch-all files when they create review, testing, ownership, or comprehension risk, and tell the user they may be good candidates for a proper refactor.
-- When there are multiple viable approaches on a shared or durable surface, provide options and a recommendation instead of silently choosing. If the user must choose or approve one of those approaches before work continues, mark the checkpoint as `Decision needed` or count the open decision.
+- When there are multiple viable approaches on a shared or durable surface, provide options and a recommendation instead of silently choosing. If the user must choose or approve one of those approaches before work continues, mark the checkpoint as `Approval needed` plus `Decision needed` or count the open decision.
 
 ## Linus 8.0+
 

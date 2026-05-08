@@ -6,7 +6,9 @@ Use these patterns to ask fewer, better questions as Linus Level rises.
 
 - Every Linus response needs a checkpoint: identify assumptions first, then use the compact default `LL X · No approval · No open questions` only when no unresolved user input remains. Expand when Linus Level needs to surface approval, decisions, open questions, assumptions, blocked work, verification gaps, risk, or read-only/no-change status.
 - `No open questions` means no unanswered question, approval, confirmation, option choice, or material decision remains.
-- If approval is needed, use `Decision needed`, `Awaiting confirmation`, or a counted open question/decision instead of `No open questions`.
+- Treat approval as a derived gate: if the agent is waiting on the user before its next action, approval is needed.
+- Do not pair `No approval` with any open question, open decision, requested confirmation, option choice, or user-gated next step.
+- If approval is needed, use `Approval needed`, `Decision needed`, `Awaiting confirmation`, or a counted open question/decision instead of `No approval` or `No open questions`.
 - Ask only when the answer changes the work.
 - Prefer one or two precise questions over a broad questionnaire.
 - State why the question matters.
@@ -17,7 +19,7 @@ Use these patterns to ask fewer, better questions as Linus Level rises.
 - At high Linus Levels, do not bury a material assumption in the final response after already acting.
 - At Linus 8+, asking a narrow, source-of-truth question is forward progress when an unknown affects correctness, contracts, public claims, legal/commercial wording, operations, security, data, or production behavior.
 - At Linus 8.5+, when the intended next step for a material action is unverified, approval should be `yes` until that assumption is surfaced and confirmed.
-- When multiple viable material options are presented and the user must choose or approve one, treat that as an open decision even if no sentence ends with a question mark.
+- When multiple viable material options are presented and the user must choose or approve one, treat that as an approval gate and open decision even if no sentence ends with a question mark.
 
 ## Good Questions
 
